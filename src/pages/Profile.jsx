@@ -1,6 +1,12 @@
+import ProfileCard from '../components/ProfileCard';
+import SambutanSekolah from '../components/SambutanSekolah';
+import Sejarah from '../components/Sejarah';
 const Profile = () => {
   return (
-    <div>Profile</div>
-  )
-}
-export default Profile
+    <>
+      <SambutanSekolah />
+      <Sejarah />
+    </>
+  );
+};
+export default Profile;

@@ -18,14 +18,17 @@ html {
 
   /* grey */
   --grey: #d9d9d9;
-  --grey-100: #f1f5f9;
+  --grey-100: #868686;
+  --grey-200: #DDDDDD;
+
 
   /* rest of the colors */
   --black: #222;
   --white: #fff;
+
+  --blue:#003169;
   --red-light: #f8d7da;
   --red-dark: #842029;
-  --green-light: #d1e7dd;
   --green-dark: #0f5132;
 
   --small-text: 0.875rem;
@@ -500,4 +503,69 @@ PROJECT CSS
 
 Footer{
   text-align: center;
+  color: white;
+}
+
+
+.container-profile-card{
+  margin-top: 150px;
+  width:var(--max-width);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  border: 2px solid var(--grey-200);
+}
+
+.header-profile-card{
+  display: flex;
+  justify-content: center;
+}
+
+.border-profile-card{
+  background-color: var(--grey-100);
+  width: max-content;
+  padding: 0 200px;
+  margin-top: 35px;
+  
+
+}
+.header-profile-card{
+  color: white;
+  
+}
+.img-profile-card{
+  margin-left: 50px;
+}
+.deskripsi-profile-card{
+  margin-right: 200px;
+  text-align: justify;
+  margin-bottom: 100px;
+}
+.img-profile-card{
+  width: 187px;
+  height: 273px;
+}
+.content-profile-card{
+  display: flex;
+  gap: 100px;
+
+}
+
+
+.kepala-sekolah-profile-card{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.name-profile-card{
+  background-color: var(--blue);
+  border-radius: 50px;
+  padding: 0 10px;
+  margin-left: 50px;
+
+}
+.name-kepala-sekolah{
+  color: white;
 }
