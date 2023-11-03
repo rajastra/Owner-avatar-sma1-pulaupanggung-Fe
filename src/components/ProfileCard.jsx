@@ -17,7 +17,7 @@ const ProfileCard = ({ header, image, name, deskripsi }) => {
             <span className="name-kepala-sekolah">{name}</span>
           </div>
         </div>
-        1
+
         <div className="deskripsi-profile-card">
           <p>{deskripsi}</p>
         </div>

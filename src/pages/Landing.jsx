@@ -26,8 +26,8 @@ const Landing = () => {
   return (
     <>
       <Banner />
-      <InfoCards />
       <InfoSchool />
+      <InfoCards />
       <Akreditasi />
       <Newslist />
       <NewsKegiatanList />

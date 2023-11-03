@@ -27,6 +27,8 @@ html {
   --white: #fff;
 
   --blue:#003169;
+  --greyBlue:#595A66;
+  --blue-200: #7BA2B8;
   --red-light: #f8d7da;
   --red-dark: #842029;
   --green-dark: #0f5132;
@@ -294,6 +296,7 @@ PROJECT CSS
   justify-content: space-around;
   width: 100%;
   max-width: var(--max-width); /* Limit the maximum width for larger screens */
+  background-color: var(--blue-200);
 }
 
 
@@ -301,7 +304,7 @@ PROJECT CSS
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 100px 60px;
+  padding: 100px 60px;
 }
 
 
@@ -317,9 +320,9 @@ PROJECT CSS
   flex-direction: column; /* For small screens, stack elements vertically */
   gap: 30px;
   align-items: center;
-  background-color: var(--grey);
+  background-color: var(--blue-200);
   padding: 45px;
-  border-radius: 50px;
+  
 
   @media (min-width: 968px) {
     flex-direction: row; /* For larger screens, display elements in a row */
@@ -343,8 +346,8 @@ PROJECT CSS
 
 .container-news {
   background-color: #f4f4f4;
-  padding: 20px;
- 
+  
+
   margin: 10px;
   border-radius: 5px;
 }
@@ -353,6 +356,9 @@ PROJECT CSS
   display: flex;
   flex-direction: column;
 
+  color: white;
+}
+.heading-news{
   color: black;
 }
 .wave-news-up{
@@ -568,4 +574,117 @@ Footer{
 }
 .name-kepala-sekolah{
   color: white;
+}
+.container-visi-misi{
+  margin-top: 150px;
+  width:var(--max-width);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  border: 2px solid var(--grey-200);
+
+}
+
+.visi-sekolah{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.header-visi-text{
+  font-weight: bold;
+}
+.deskripsi-visi{
+  margin: 0 400px;
+}
+.dekskripsi-visi-paragraph{
+  text-align: center;
+}
+
+.header-misi{
+  text-align: center;
+
+}
+.misi-Container{
+  background-color: var(--grey);
+  padding: 30px;
+  text-align: center;
+  align-items: center;
+  border-radius: 25px;
+}
+
+@media screen and (min-width: 768px) {
+  .section-misi {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 20px 100px;
+  
+   
+  }
+}
+@media screen and (min-width: 1170px) {
+    .section-misi {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  
+  }
+}
+.container-fasilitas{
+  margin-top: 150px;
+  width:var(--max-width);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  border: 2px solid var(--grey-200);
+
+}
+.fasilitas-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-fasilitas{
+  background-color: var(--greyBlue);
+  padding: 20px;
+  border-radius: 25px;
+}
+.type-fasilitas{
+  margin-top: 10px;
+  background-color: var(--greyBlue);
+  padding: 10px;
+  border-radius: 25px;
+}
+.name-fasilitas{
+  color: white;
+}
+
+
+.img-fasilitas{
+
+ width: 196.58px;
+height: 107.884px; 
+}
+
+@media screen and (min-width: 768px) {
+  .section-fasilitas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 20px 100px;
+  
+   
+  }
+}
+@media screen and (min-width: 1170px) {
+    .section-fasilitas {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  
+  }
 }

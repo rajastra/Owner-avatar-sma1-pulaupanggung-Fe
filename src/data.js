@@ -4,6 +4,12 @@ import tenaga_pendidik from './assets/tenaga pendidik.png';
 import kelas from './assets/kelas.png';
 import kepalaSekolah from './assets/kepala-sekolah.png';
 import landingProfile from './assets/landing profile.jpg';
+import Wifi from './assets/wifi.png';
+import labComputer from './assets/lab-computer.png';
+import labIPA from './assets/laboratorium-ipa.png';
+import perpustakaan from './assets/perpustakaan.png';
+import lapanganBasket from './assets/lapangan-basket.png';
+import lapanganVolley from './assets/lapangan-volley.png';
 
 export const info_data = [
   {
@@ -56,19 +62,19 @@ export const kegiatan_data = [
   {
     id: 1,
     name: '3 siswa dengan nilai ujian terbaik',
-    type: 'news',
+    type: 'kegiatan',
     calendar: '2023-05-10',
   },
   {
     id: 2,
     name: '3 siswa dengan nilai ujian terbaik',
-    type: 'news',
+    type: 'kegiatan',
     calendar: '2023-05-40',
   },
   {
     id: 3,
     name: 'siswa ini memenangkan nobel',
-    type: 'news',
+    type: 'kegiatan',
     calendar: '2023-02-20',
   },
 ];
@@ -100,5 +106,85 @@ export const sejarah_data = [
     // name: 'Drs. H. Sasmadi',
     deskripsi:
       'Sejarah Singkat SMAN 1 Pulau Panggung Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque nibh odio, ac congue enim ultricies in. Curabitur non faucibus nibh. Vivamus ac risus a mauris porta cursus et at ligula. Vestibulum egestas mi at velit mollis, in placerat risus gravida. In venenatis tortor ante, non fringilla sem ultricies id. Vestibulum in imperdiet leo. Nulla id eleifend risus, non ornare odio.',
+  },
+];
+
+export const misi_data = [
+  {
+    id: 1,
+    misi: 'Mewujudkan kegiatan belajar mengajar dan bimbingan secara efektif',
+  },
+  {
+    id: 2,
+    misi: 'Membangkitkan semangat warga sekolah untuk mencapai kualitas yang lebih baik',
+  },
+  {
+    id: 3,
+    misi: 'Mendorong dan membantu siswa untuk mengenali potensi dirinya sehingga dapat dikembangkan secara positif',
+  },
+  {
+    id: 4,
+    misi: 'Menanamkan sifat kreatif dan inovatif baik akademis maupun non akademis bagi warga sekolah',
+  },
+  {
+    id: 5,
+    misi: 'Menumbuhkan penghayatan keagamaan yang akan menuntun sikap dan prilaku yang sesuai dengan norma agama dan social',
+  },
+  {
+    id: 6,
+    misi: 'Mewujudkan siswa mampu berapresiasi dan berkreasi dalam bidang seni dan teknologi',
+  },
+  {
+    id: 7,
+    misi: 'Mewujudkan sarana prasarana sebagai pendukung kegiatan belajar mengajar secara efektif',
+  },
+  {
+    id: 8,
+    misi: 'Meningkatkan disiplin bagi warga sekolah',
+  },
+  {
+    id: 9,
+    misi: 'Mewujudkan lingkungan sekolah yang aman, nyaman',
+  },
+  {
+    id: 10,
+    misi: 'Mewujudkan sekolah bersih, sehat serta peduli lingkungan menuju Sekolah Adiwiyata',
+  },
+  {
+    id: 11,
+    misi: 'Mewujudkan kerjasama dengan unsur masyarakat, komite sekolah maupun instansi yang lain',
+  },
+];
+
+export const fasilitas_data = [
+  {
+    id: 1,
+    image: Wifi,
+    fasilitas: 'Wifi',
+  },
+  {
+    id: 2,
+    image: labComputer,
+    fasilitas: 'Lab Computer',
+  },
+  {
+    id: 3,
+    image: labIPA,
+    fasilitas: 'Lab IPA',
+  },
+  {
+    id: 4,
+    image: perpustakaan,
+    fasilitas: 'Perpustakaan',
+  },
+  {
+    id: 5,
+    image: lapanganBasket,
+    fasilitas: 'Lapangan Basket',
+  },
+  {
+    id: 6,
+    image: lapanganVolley,
+    fasilitas: 'Lapangan Voli',
   },
 ];

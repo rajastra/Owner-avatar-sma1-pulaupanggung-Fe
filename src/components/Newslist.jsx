@@ -10,7 +10,7 @@ const Newslist = () => {
       <div className="header-news">
         <img className="wave-news-up" src={waveUp} alt="wave" />
         <div className="header-container">
-          <h3 className="header-news">Berita Terkini</h3>
+          <h3 className="heading-news">Berita Terkini</h3>
           <div className="line">
             <hr className="line-header" />
             <hr className="line-sub-header" />
