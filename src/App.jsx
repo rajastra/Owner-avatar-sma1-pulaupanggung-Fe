@@ -1,8 +1,15 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { HomeLayout, Landing } from './pages';
+import { HomeLayoutWithNavbar, Landing, HomeLayoutWithoutNavbar } from './pages';
 import Profile from './pages/Profile';
+
+import Dashboard from './pages/Dashboard';
+import Kelas from './pages/Kelas';
+
+import Murid from './pages/Murid';
+
+import Admin from './pages/Admin';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,7 +22,7 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomeLayout />,
+    element: <HomeLayoutWithNavbar />,
     errorElement: <Error />,
     children: [
       {
@@ -28,12 +35,28 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    element: <Dashboard />,
+    path: '/Dashboard',
+  },
+  {
+    element: <Kelas />,
+    path: '/kelas',
+  },
+  {
+    element: <Murid />,
+    path: '/murid',
+  },
+  {
+    element: <Admin />,
+    path: '/admin',
+  },
 ]);
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

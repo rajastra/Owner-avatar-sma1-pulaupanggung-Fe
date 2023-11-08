@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/Navbar';
 import logo from '../assets/sma.png';
 import hamburger from '../assets/hamburger.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +16,7 @@ const Navbar = () => {
     <Wrapper>
       <div className={`nav-center ${isMenuOpen ? 'menu-open' : ''}`}>
         <span className="logo">
-          <img className="logo sekolah" src={logo} alt="" />
+          <img className="logo-sekolah" src={logo} alt="" />
         </span>
         <div className={`nav-links ${isMenuOpen ? 'show-links' : ''}`}>
           <NavLink to="/" className="nav-link">
@@ -30,6 +31,11 @@ const Navbar = () => {
           <NavLink to="/news" className="nav-link">
             News
           </NavLink>
+          <Link to="/dashboard">
+            <button className="btn-login" type="submit">
+              Login
+            </button>
+          </Link>
         </div>
         <div className="hamburger-icon" onClick={toggleMenu}>
           <img className="hamburger" src={hamburger} alt="Menu" />

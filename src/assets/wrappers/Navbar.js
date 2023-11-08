@@ -14,6 +14,19 @@ const Wrapper = styled.nav`
 
   }
 
+  .logo{
+    width: 100px; 
+    overflow: hidden; /
+  }
+
+  .logo-sekolah{
+    max-width: 100%; 
+    max-height: 100%; 
+    display: block; 
+    margin: 0 auto;
+
+  }
+
     .hamburger-icon {
       display: none;
     }
@@ -26,7 +39,14 @@ const Wrapper = styled.nav`
     .nav-links {
       display: none;
     }
-
+    
+    .btn-login{
+       background-color: var(--brown); 
+      color: #fff; 
+      padding: 10px 20px; 
+      border: none; 
+      border-radius:20px
+    }
     .nav-link {
       color: var(--grey-800);
       padding: 0.5rem 0.5rem 0.5rem 0;
@@ -52,6 +72,7 @@ const Wrapper = styled.nav`
         justify-content: space-between;
         align-items: center;
       }
+   
 
       .nav-links {
         display: flex;
