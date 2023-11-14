@@ -24,6 +24,8 @@ html {
   --grey-400: #CAD1D8;
   --grey-500: #D9D9D9;
   --grey-600: #6B6666;
+  --grey-700: #6F707E;
+
   /* brown */
   --brown: #BAA883;
 
@@ -926,4 +928,46 @@ height: 107.884px;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 
+}
+
+.btn-add-murid{
+  background-color: var(--grey-700);
+  color: white;
+ width: 200px;
+ height: 60px;
+  text-align: center;
+}
+
+.button-contain{
+  margin-left: 50px;
+  margin-top: 30px;
+}
+.btn-save-murid{
+  background-color: var(--grey-700);
+  color: white;
+  
+  text-align: center;
+}
+.header-murid-form{
+  display: flex;
+  justify-content: space-between;
+}
+.container-table-murid{
+  margin-top: 100px;
+}
+.icon-edit-data{
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-upload-photo{
+  background-color: var(--grey-700);
+  color: white;
+
+  width: 100px;
+}
+.upload-photo-container{
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

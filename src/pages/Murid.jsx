@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '../assets/sma.png';
 import MuridForm from '../components/MuridForm';
+import TableMurid from '../components/TableMurid';
 
 const Murid = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -97,6 +98,7 @@ const Murid = () => {
             }}
           >
             <MuridForm />
+            <TableMurid />
           </div>
         </Content>
         <Footer

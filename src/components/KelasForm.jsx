@@ -4,7 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { Button } from 'antd';
 
-const MuridForm = () => {
+const KelasForm = () => {
   const [open, openchange] = useState(false);
   const functionopenpopup = () => {
     openchange(true);
@@ -16,7 +16,7 @@ const MuridForm = () => {
     <div className="container-murid-form-dialog">
       <div className="header-murid-form">
         <Button onClick={functionopenpopup} className="btn-add-murid">
-          Tambah Murid
+          Tambah Kelas
         </Button>
         <TextField variant="outlined" label="Search"></TextField>
       </div>
@@ -28,7 +28,7 @@ const MuridForm = () => {
         maxWidth="sm"
       >
         <DialogTitle>
-          Tambah Murid{' '}
+          Tambah Kelas{' '}
           <IconButton onClick={closepopup} style={{ float: 'right' }}>
             <CloseIcon color="primary"></CloseIcon>
           </IconButton>{' '}
@@ -36,18 +36,12 @@ const MuridForm = () => {
         <DialogContent>
           {/* <DialogContentText>Do you want remove this user?</DialogContentText> */}
           <Stack spacing={2} margin={2}>
-            <TextField variant="outlined" label="Kelas"></TextField>
-            <TextField variant="outlined" label="Nama"></TextField>
-            <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
-
-            <TextField variant="outlined" label="NIS"></TextField>
-            <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="female" name="radio-buttons-group">
-              <FormControlLabel value="female" control={<Radio />} label="Female" />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
-            </RadioGroup>
+            <TextField variant="outlined" label="Nama Kelas"></TextField>
+            <TextField variant="outlined" label="Nama Ruangan"></TextField>
+            <TextField variant="outlined" label="Nama Wali Kelas"></TextField>
 
             <Button onClick={closepopup} className="btn-save-murid">
-              Tambah Murid
+              Tambah Kelas
             </Button>
           </Stack>
         </DialogContent>
@@ -55,4 +49,4 @@ const MuridForm = () => {
     </div>
   );
 };
-export default MuridForm;
+export default KelasForm;

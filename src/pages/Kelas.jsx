@@ -4,6 +4,9 @@ import { Layout, Menu, Button, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import { Link } from 'react-router-dom';
 
+import KelasForm from '../components/KelasForm';
+import TableKelas from '../components/TableKelas';
+
 import logo from '../assets/sma.png';
 
 const Kelas = () => {
@@ -95,7 +98,8 @@ const Kelas = () => {
               background: colorBgContainer,
             }}
           >
-            ini kelas
+            <KelasForm />
+            <TableKelas />
           </div>
         </Content>
         <Footer

@@ -5,6 +5,8 @@ const { Header, Content, Footer, Sider } = Layout;
 import { Link } from 'react-router-dom';
 
 import logo from '../assets/sma.png';
+import AdminForm from '../components/AdminForm';
+import TableAdmin from '../components/TableAdmin';
 
 const Admin = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -95,7 +97,8 @@ const Admin = () => {
               background: colorBgContainer,
             }}
           >
-            ini admin
+            <AdminForm />
+            <TableAdmin />
           </div>
         </Content>
         <Footer
