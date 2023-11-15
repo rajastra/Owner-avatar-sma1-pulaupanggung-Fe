@@ -6,3 +6,6 @@ export { default as Dashboard } from './Dashboard';
 export { default as Kelas } from './Kelas';
 export { default as Murid } from './Murid';
 export { default as Admin } from './Admin';
+export { default as GuruTendik } from './GuruTendik'
+export { default as Struktur } from './struktur'
+

@@ -11,6 +11,9 @@ import Murid from './pages/Murid';
 
 import Admin from './pages/Admin';
 
+import GuruTendik from './pages/GuruTendik';
+import Struktur from './pages/struktur';
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -50,6 +53,14 @@ const router = createBrowserRouter([
   {
     element: <Admin />,
     path: '/admin',
+  },
+  {
+    element: <GuruTendik />,
+    path: '/guru-tendik',
+  },
+  {
+    element: <Struktur />,
+    path: '/struktur',
   },
 ]);
 
