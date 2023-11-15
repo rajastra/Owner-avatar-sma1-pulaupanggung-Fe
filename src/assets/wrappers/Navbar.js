@@ -40,13 +40,7 @@ const Wrapper = styled.nav`
       display: none;
     }
     
-    .btn-login{
-       background-color: var(--brown); 
-      color: #fff; 
-      padding: 10px 20px; 
-      border: none; 
-      border-radius:20px
-    }
+   
     .nav-link {
       color: var(--grey-800);
       padding: 0.5rem 0.5rem 0.5rem 0;
