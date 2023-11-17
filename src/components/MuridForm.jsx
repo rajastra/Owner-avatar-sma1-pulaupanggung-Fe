@@ -38,12 +38,12 @@ const MuridForm = () => {
           <Stack spacing={2} margin={2}>
             <TextField variant="outlined" label="Kelas"></TextField>
             <TextField variant="outlined" label="Nama"></TextField>
-            <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
 
             <TextField variant="outlined" label="NIS"></TextField>
-            <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="female" name="radio-buttons-group">
-              <FormControlLabel value="female" control={<Radio />} label="Female" />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
+            <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+            <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="female" name="radio-buttons-group" row>
+              <FormControlLabel value="Lak-laki" control={<Radio />} label="Female" />
+              <FormControlLabel value="Perempuan" control={<Radio />} label="Male" />
             </RadioGroup>
 
             <Button onClick={closepopup} className="btn-save-murid">

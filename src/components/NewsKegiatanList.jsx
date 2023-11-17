@@ -24,9 +24,9 @@ const NewsKegiatanList = () => {
             return <News {...data} key={data.id} />;
           })}
         </div>
-        {/* <div className="logo-news">
+        <div className="logo-news">
           <img className="news-image" src={news} alt="" />
-        </div> */}
+        </div>
       </div>
       <img className="wave-news-up" src={waveDown} alt="wave" />
     </div>

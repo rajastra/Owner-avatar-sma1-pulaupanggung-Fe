@@ -19,7 +19,7 @@ html {
   /* grey */
   --grey: #d9d9d9;
   --grey-100: #868686;
-  --grey-200: #DDDDDD;;
+  --grey-200: #DDDDDD;
   --grey-300: #F2F2F2;
   --grey-400: #CAD1D8;
   --grey-500: #D9D9D9;
@@ -39,6 +39,7 @@ html {
   --red-light: #f8d7da;
   --red-dark: #842029;
   --green: #6B8E23;
+  --green-200: #5C965B;
 
   --small-text: 0.875rem;
   --extra-small-text: 0.7em;
@@ -303,7 +304,7 @@ PROJECT CSS
   justify-content: space-around;
   width: 100%;
   max-width: var(--max-width); /* Limit the maximum width for larger screens */
-  background-color: var(--blue-200);
+  background-color: var(--green-200);
 }
 
 
@@ -327,7 +328,7 @@ PROJECT CSS
   flex-direction: column; /* For small screens, stack elements vertically */
   gap: 30px;
   align-items: center;
-  background-color: var(--blue-200);
+  background-color: var(--green-200);
   padding: 45px;
   
 
@@ -428,28 +429,35 @@ PROJECT CSS
   margin: 20px 0;
 }
 .logo-news {
-  width: 150px;
-  margin-right: 20px;
+display: flex;
+  align-items: center;
+  width: 750px;
+  margin-right: 70px;
+  margin-left: 70px;
 }
 .news-image {
   width: 100%;
+ 
 }
 .news{
     background-color: black;
-  width: 330px;
-  height: 330px;
+
   display: flex;
   flex-direction: column;
   justify-content: end;
-  padding: 30px;
+  padding:  30px 70px;
   
 }
  .news-text, .calender-text{
+
   color: white;
   text-align: start;
 }
 .header-news{
+  margin-top: 100px;
   margin-bottom: 15px;
+  text-align: start;
+  font-size: 20px;
 }
 .ic-news{
   margin-bottom: 5px;
@@ -475,24 +483,26 @@ PROJECT CSS
   display: flex;
   gap: 1px;
 }
-.section-news {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-@media (max-width: 768px) {
-
-
-  .content-news{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media screen and (min-width: 768px) {
+  .section-news {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 20px 100px;
+  
+   
   }
-
-
 }
+@media screen and (min-width: 1170px) {
+    .section-news {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  
+  }
+}
+
+
+
 
 
 /* Motivate.css */
@@ -957,7 +967,8 @@ height: 107.884px;
 }
 .icon-edit-data{
   display: flex;
-  justify-content: space-around;
+  justify-content: end;
+  gap: 20px;
 }
 
 .btn-upload-photo{
@@ -1094,8 +1105,7 @@ button span {
       border-radius:20px
     }
 
-
-    .searchIcon{
+.searchIcon{
       margin-left: 20px;
       background-color: var(--brown); 
       color: #fff; 
@@ -1104,3 +1114,16 @@ button span {
       border-radius:20px
 
     }
+
+.sub-header-name-bar{
+  background-color: var(--grey-500);
+  width:100%;
+  border: 1.5px solid #000;
+
+}
+
+.name-section-bar{
+  padding-left: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}

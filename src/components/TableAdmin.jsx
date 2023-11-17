@@ -11,7 +11,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const columns = [
-  { id: 'no', label: 'Email', minWidth: 170 },
+  { id: 'no', label: 'no', minWidth: 170 },
   { id: 'email', label: 'Email', minWidth: 170 },
   { id: 'username', label: 'Username', minWidth: 100 },
   {

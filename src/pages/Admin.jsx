@@ -75,6 +75,7 @@ const Admin = () => {
         <Header
           style={{
             padding: 0,
+            marginBottom: 100,
             background: '#6B8E23',
           }}
         >
@@ -83,6 +84,9 @@ const Admin = () => {
               <UserOutlined />
             </div>
             <div className="name-bar">susanti</div>
+          </div>
+          <div className="sub-header-name-bar">
+            <div className="name-section-bar">Data Admin</div>
           </div>
         </Header>
         <Content

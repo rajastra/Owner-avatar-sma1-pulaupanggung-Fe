@@ -18,9 +18,9 @@ const Newslist = () => {
         </div>
       </div>
       <div className="content-news">
-        {/* <div className="logo-news">
+        <div className="logo-news">
           <img className="news-image" src={news} alt="" />
-        </div> */}
+        </div>
         <div className="section-news">
           {news_data.map((data) => {
             return <News {...data} key={data.id} />;

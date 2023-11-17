@@ -51,7 +51,7 @@ const AdminForm = () => {
             <TextField variant="outlined" label="Email"></TextField>
             <FormLabel id="demo-radio-buttons-group-label">Jenis Kelamin</FormLabel>
 
-            <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="female" name="radio-buttons-group">
+            <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="female" name="radio-buttons-group" row>
               <FormControlLabel value="female" control={<Radio />} label="Female" />
               <FormControlLabel value="male" control={<Radio />} label="Male" />
             </RadioGroup>

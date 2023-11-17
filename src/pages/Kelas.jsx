@@ -76,6 +76,7 @@ const Kelas = () => {
         <Header
           style={{
             padding: 0,
+            marginBottom: 100,
             background: '#6B8E23',
           }}
         >
@@ -84,6 +85,9 @@ const Kelas = () => {
               <UserOutlined />
             </div>
             <div className="name-bar">susanti</div>
+          </div>
+          <div className="sub-header-name-bar">
+            <div className="name-section-bar">Data Kelas</div>
           </div>
         </Header>
         <Content
