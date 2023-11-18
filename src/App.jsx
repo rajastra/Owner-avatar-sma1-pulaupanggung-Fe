@@ -13,6 +13,7 @@ import Admin from './pages/Admin';
 
 import GuruTendik from './pages/GuruTendik';
 import Struktur from './pages/struktur';
+import Login from './pages/Login';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
         path: 'Profile',
         element: <Profile />,
       },
+      {
+        path: '/gurutendik',
+        element: <GuruTendik />,
+      },
+      {
+        element: <Struktur />,
+        path: '/struktur',
+      },
     ],
   },
   {
@@ -55,12 +64,8 @@ const router = createBrowserRouter([
     path: '/admin',
   },
   {
-    element: <GuruTendik />,
-    path: '/guru-tendik',
-  },
-  {
-    element: <Struktur />,
-    path: '/struktur',
+    element: <Login />,
+    path: '/login',
   },
 ]);
 
