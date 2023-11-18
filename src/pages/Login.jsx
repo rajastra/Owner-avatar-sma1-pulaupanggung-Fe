@@ -22,7 +22,7 @@ export default function Login() {
   return (
     <div className='div'>
         <div className='box'>
-            <p className='p1'>SELAMAT DATANG</p>
+            <p className='p1'>SELAMAT DATANG!!</p>
             <p className='p2'>di Website SMAN 1 Pulau Panggung</p>
         </div><br></br>
         <form onSubmit={handleSubmit} id='form'>
