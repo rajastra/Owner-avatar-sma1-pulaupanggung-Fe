@@ -36,6 +36,14 @@ const router = createBrowserRouter([
         path: 'Profile',
         element: <Profile />,
       },
+      {
+        path: '/gurutendik',
+        element: <GuruTendik />,
+      },
+      {
+        element: <Struktur />,
+        path: '/struktur',
+      },
     ],
   },
   {
@@ -53,14 +61,6 @@ const router = createBrowserRouter([
   {
     element: <Admin />,
     path: '/admin',
-  },
-  {
-    element: <GuruTendik />,
-    path: '/guru-tendik',
-  },
-  {
-    element: <Struktur />,
-    path: '/struktur',
   },
 ]);
 

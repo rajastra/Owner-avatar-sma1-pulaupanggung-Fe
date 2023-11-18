@@ -17,7 +17,7 @@ export const menuItems = [
       },
       {
         title: 'Guru dan Tendik',
-        url: 'gurudantendik',
+        url: 'gurutendik',
       },
     ],
   },
