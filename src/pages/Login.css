@@ -1,0 +1,80 @@
+.div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.box{
+    background-image: url(https://cdn.animaapp.com/projects/6524cf5b3785a3243553e2bc/releases/654278860fa7e6d367be7d1e/img/title-2.svg);
+    width: 751px;
+    height: 150px;
+    text-align: center;
+    color: white;
+    font-family: "Inria Serif", Helvetica;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.p1{
+    font-size: 50px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+
+.p2{
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+input[type=text], input[type=password]{
+    width: 591px;
+    height: 79px;
+    color: #9c9c9c;
+    font-family: "Archivo", Helvetica;
+    font-size: 20px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1.5px solid #c4c4c4;
+    box-sizing: border-box;
+}
+
+.check{
+    color: #6f6f6f;
+    font-family: "Archivo", Helvetica;
+    font-size: 14px;
+}
+
+.sign-in{
+    background-color: #595a66;
+    border: 1px solid;
+    border-radius: 1px;
+    height: 31px;
+    width: 90px;
+    color: #ffffff;
+    font-family: "Inria Serif", Helvetica;
+    font-size: 16px;
+    position: absolute;
+    left: 875px;
+    top: 400px;
+}
+
+.icon1{
+    color: #777777;
+    height: 50px;
+    width: 50px;
+    font-size: 40px;
+    position: absolute;
+    right: 385px;
+    top: 202px;
+}
+
+.icon2{
+    color: #777777;
+    height: 50px;
+    width: 50px;
+    font-size: 40px;
+    position: absolute;
+    right: 385px;
+    top: 316px;
+}

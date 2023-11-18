@@ -13,6 +13,7 @@ import Admin from './pages/Admin';
 
 import GuruTendik from './pages/GuruTendik';
 import Struktur from './pages/struktur';
+import Login from './pages/Login';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
   {
     element: <Admin />,
     path: '/admin',
+  },
+  {
+    element: <Login />,
+    path: '/login',
   },
 ]);
 
