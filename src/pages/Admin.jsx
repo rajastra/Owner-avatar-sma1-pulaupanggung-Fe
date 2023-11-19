@@ -1,18 +1,63 @@
-import React, { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined } from '@ant-design/icons';
-import { Layout, Menu, Button, theme } from 'antd';
+import { Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import { Link } from 'react-router-dom';
 
 import logo from '../assets/sma.png';
 import AdminForm from '../components/AdminForm';
 import TableAdmin from '../components/TableAdmin';
+import axios from 'axios';
+import AdminFormEdit from '../components/AdminFormEdit';
 
 const Admin = () => {
-  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const [users, setUsers] = useState([]);
+  const [open, openchange] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const [user, setUser] = useState({});
+  const URL = import.meta.env.VITE_API_URL;
+
+  const getUsers = useCallback(async () => {
+    try {
+      const response = await axios.get(`${URL}/api/v1/users`);
+      setUsers(response?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [URL]);
+
+  const handleEdit = (user) => {
+    setIsEdit(true);
+    setUser(user);
+  }
+
+  const functionopenpopup = () => {
+    openchange(true);
+  };
+  const closepopup = () => {
+    openchange(false);
+    setIsEdit(false);
+  };
+
+  const onCreate = () => {
+    getUsers();
+    openchange(false);
+  }
+
+  const onEdit = () => {
+    getUsers();
+    setIsEdit(false);
+  }
+
+  useEffect(() => {
+    getUsers();
+  }, [getUsers]);
+
+
+
   return (
     <Layout>
       <Sider
@@ -101,8 +146,19 @@ const Admin = () => {
               background: colorBgContainer,
             }}
           >
-            <AdminForm />
-            <TableAdmin />
+            <AdminForm
+              open={open}
+              closepopup={closepopup}
+              functionopenpopup={functionopenpopup}
+              onCreate={onCreate}
+            />
+            <AdminFormEdit
+              open={isEdit}
+              closepopup={closepopup}
+              onEdit={onEdit}
+              user={user}
+            />
+            <TableAdmin data={users} setUser={handleEdit} getUsers={getUsers} />
           </div>
         </Content>
         <Footer

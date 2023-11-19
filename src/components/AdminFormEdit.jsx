@@ -1,16 +1,15 @@
 import { Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, message } from 'antd';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import axios from 'axios';
 
-const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
+const AdminFormEdit = ({ closepopup, open, onEdit, user }) => {
   const [formState, setFormState] = useState({
     nama: '',
     email: '',
-    username: '',
     password: '',
     role: '',
   });
@@ -29,20 +28,28 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
     setFormState({
       nama: '',
       email: '',
-      username: '',
       password: '',
       role: '',
     });
   };
 
+  useEffect(() => {
+    if (open) {
+      setFormState({
+        nama: user.username,
+        email: user.email,
+        role: user.role,
+      });
+    }
+  }, [open, user]);
+
 
   const handleSubmit = async () => {
     // Perform data submission logic here
     try {
-      await axios.post(`${API_URL}/api/v1/users`, {
+      await axios.patch(`${API_URL}/api/v1/users/${user.id}`, {
         name: formState.nama,
         email: formState.email,
-        username: formState.username,
         password: formState.password,
         role: formState.role,
       });
@@ -50,11 +57,10 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
       setFormState({
         nama: '',
         email: '',
-        username: '',
         password: '',
         role: '',
       });
-      onCreate();
+      onEdit();
     } catch (error) {
       let msg = error.response.data.message || 'Terjadi kesalahan';
       message.error(msg);
@@ -63,12 +69,6 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
 
   return (
     <div className="container-murid-form-dialog">
-      <div className="header-murid-form">
-        <Button onClick={functionopenpopup} className="btn-add-murid">
-          Tambah Admin
-        </Button>
-        <TextField variant="outlined" label="Search"></TextField>
-      </div>
       <Dialog
         // fullScreen
         open={open}
@@ -77,7 +77,7 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
         maxWidth="sm"
       >
         <DialogTitle>
-          Tambah Admin{' '}
+          Edit Admin{' '}
           <IconButton onClick={handleClose} style={{ float: 'right' }}>
             <CloseIcon></CloseIcon>
           </IconButton>{' '}
@@ -99,14 +99,6 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
               onChange={handleChange}
               value={formState.email}
             ></TextField>
-
-            <TextField
-              variant="outlined"
-              label="Username"
-              name="username"
-              onChange={handleChange}
-              value={formState.username}
-            ></TextField>
             <TextField
               variant="outlined"
               label="Password"
@@ -122,9 +114,9 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
               value={formState.role}
               onChange={handleChange}
             >
-              <MenuItem value={'Admin'}>Admin</MenuItem>
-              <MenuItem value={'User'}>user</MenuItem>
-              <MenuItem value={'Laboran'}>Laboran</MenuItem>
+              <MenuItem value={'admin'}>Admin</MenuItem>
+              <MenuItem value={'user'}>user</MenuItem>
+              <MenuItem value={'laboran'}>Laboran</MenuItem>
             </Select>
             {/* <div className="upload-photo-container">
               <Button onClick={closepopup} className="btn-upload-photo">
@@ -136,7 +128,7 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
             </div> */}
 
             <Button onClick={handleSubmit} className="btn-save-murid">
-              Tambah Admin
+              Edit Admin
             </Button>
           </Stack>
         </DialogContent>
@@ -145,4 +137,4 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
   );
 };
 
-export default AdminForm;
+export default AdminFormEdit;
