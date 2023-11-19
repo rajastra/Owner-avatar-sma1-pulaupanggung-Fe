@@ -6,9 +6,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import * as React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import axios from 'axios';
+import { useState } from 'react';
+import { message } from 'antd';
 
 const columns = [
   { id: 'no', label: 'no', minWidth: 170 },
@@ -21,12 +23,6 @@ const columns = [
     align: 'right',
   },
   {
-    id: 'nomorKontak',
-    label: 'Nomor Kontak',
-    minWidth: 170,
-    align: 'right',
-  },
-  {
     id: 'aksi',
     label: 'Aksi',
     minWidth: 170,
@@ -34,27 +30,65 @@ const columns = [
   },
 ];
 
-const editIcon = (
-  <div className="icon-edit-data">
-    <EditIcon />
-    <DeleteIcon />
-  </div>
-);
+const ActionIcon = ({ data, setUser, getUsers }) => {
+  const URL = import.meta.env.VITE_API_URL;
+  const handleSetUser = () => {
+    setUser(data)
+  }
 
-function createData(no, email, username, level, nomorKontak, aksi, size) {
-  const density = no / size;
-  return { no, email, username, level, nomorKontak, aksi };
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`${URL}/api/v1/users/${data.id}`);
+      message.success('Berhasil menghapus admin');
+      getUsers();
+    } catch (error) {
+      let msg = error.response.data.message || 'Terjadi kesalahan';
+      message.error(msg);
+    }
+  }
+
+  return <div className="icon-edit-data">
+    <EditIcon onClick={handleSetUser}
+      style={{
+        color: '#1890ff',
+        cursor: 'pointer'
+      }}
+    />
+    <DeleteIcon onClick={handleDelete}
+      style={{
+        color: '#ff0000',
+        cursor: 'pointer'
+      }}
+    />
+  </div>
 }
 
-const rows = [createData('1', 'dwiaanandaz90@gmail.com', 'Dwi Ananda', 'Laboran', '08223141xxx', editIcon)];
 
-const TableAdmin = () => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+function createData(id, no, email, username, level, aksi) {
+  return { id, no, email, username, level, aksi };
+}
+
+const TableAdmin = ({ data, setUser, getUsers }) => {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
+
+  const dataTable = data.map((user, index) => {
+    return createData(user.id, index + 1, user.email, user.name, user.role, <ActionIcon data={
+      {
+        email: user.email,
+        username: user.name,
+        role: user.role,
+        id: user.id
+      }
+    } setUser={setUser} getUsers={getUsers} />);
+  }
+  );
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
@@ -75,9 +109,9 @@ const TableAdmin = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+              {dataTable.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.no}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
@@ -92,9 +126,12 @@ const TableAdmin = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination rowsPerPageOptions={[10, 25, 100]} component="div" count={rows.length} rowsPerPage={rowsPerPage} page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
+        <TablePagination rowsPerPageOptions={[10, 25, 100]} component="div" count={dataTable.length} rowsPerPage={rowsPerPage} page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
       </Paper>
     </div>
   );
 };
+
+
+
 export default TableAdmin;
