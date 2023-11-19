@@ -52,7 +52,9 @@ const AdminFormEdit = ({ closepopup, open, onEdit, user }) => {
         email: formState.email,
         password: formState.password,
         role: formState.role,
-      });
+      },
+
+      );
       message.success('Berhasil menambahkan admin');
       setFormState({
         nama: '',

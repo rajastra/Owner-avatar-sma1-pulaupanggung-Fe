@@ -45,7 +45,15 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
         username: formState.username,
         password: formState.password,
         role: formState.role,
-      });
+      },
+      );
+      // ini contoh buat kalau ada upload file
+      // const response = await axios.post(`${API_URL}/api/v1/users`, formData, {
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data',
+      //   },
+      // });
+
       message.success('Berhasil menambahkan admin');
       setFormState({
         nama: '',
