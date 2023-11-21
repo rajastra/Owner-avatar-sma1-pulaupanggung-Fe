@@ -14,6 +14,8 @@ import Admin from './pages/Admin';
 import GuruTendik from './pages/GuruTendik';
 import Struktur from './pages/struktur';
 import Login from './pages/Login';
+import KelolaPost from './pages/KelolaPost';
+import KelolaGuru from './pages/KelolaGuru';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
   {
     element: <Login />,
     path: '/login',
+  },
+  {
+    element: <KelolaPost />,
+    path: '/postingan',
+  },
+  {
+    element: <KelolaGuru />,
+    path: '/guruandtendik',
   },
 ]);
 
