@@ -29,7 +29,7 @@ const PostForm = () => {
         <Button onClick={functionopenpopup} className="btn-add-murid">
           Tambah Postingan
         </Button>
-        <TextField variant="outlined" label="Search" className='Search'></TextField>
+        <TextField variant="outlined" label="Search" className="Search"></TextField>
       </div>
       <Dialog
         // fullScreen
@@ -48,17 +48,17 @@ const PostForm = () => {
           {/* <DialogContentText>Do you want remove this user?</DialogContentText> */}
           <Stack spacing={2} margin={2}>
             <TextField variant="outlined" label="Judul"></TextField>
-            <TextField variant="outlined" label="Isi Berita"></TextField>
+            <TextField variant="outlined" label="Isi Berita" multiline rows={20} maxRows={20}></TextField>
             <TextField variant="outlined" label="Tanggal"></TextField>
             <TextField variant="outlined" label="Kategori"></TextField>
             <Select labelId="demo-simple-select-label" id="demo-simple-select" value={age} label="Age" onChange={handleChange}>
               <MenuItem value={'News'}>News</MenuItem>
               <MenuItem value={'Kegiatan'}>Kegiatan</MenuItem>
             </Select>
-            
+
             <div className="upload-photo-container">
-                <FormLabel id="label">Photo</FormLabel>
-                <input type="file" id="myFile" name="filename"></input>
+              <FormLabel id="label">Photo</FormLabel>
+              <input type="file" id="myFile" name="filename"></input>
             </div>
 
             <Button onClick={closepopup} className="btn-save-murid">
