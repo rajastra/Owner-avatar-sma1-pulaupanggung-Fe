@@ -16,6 +16,8 @@ import Struktur from './pages/struktur';
 import Login from './pages/Login';
 import KelolaPost from './pages/KelolaPost';
 import KelolaGuru from './pages/KelolaGuru';
+import News from './pages/News';
+import Kegiatan from './pages/Kegiatan';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeLayoutWithNavbar />,
-    errorElement: <Error />,
+
     children: [
       {
         index: true,
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
       {
         element: <Struktur />,
         path: '/struktur',
+      },
+      {
+        element: <News />,
+        path: '/berita',
+      },
+      {
+        element: <Kegiatan />,
+        path: '/kegiatan',
       },
     ],
   },
