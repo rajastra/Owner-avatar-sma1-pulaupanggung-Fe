@@ -33,8 +33,8 @@ const columns = [
 const ActionIcon = ({ data, setUser, getUsers }) => {
   const URL = import.meta.env.VITE_API_URL;
   const handleSetUser = () => {
-    setUser(data)
-  }
+    setUser(data);
+  };
 
   const handleDelete = async () => {
     try {
@@ -45,25 +45,27 @@ const ActionIcon = ({ data, setUser, getUsers }) => {
       let msg = error.response.data.message || 'Terjadi kesalahan';
       message.error(msg);
     }
-  }
+  };
 
-  return <div className="icon-edit-data">
-    <EditIcon onClick={handleSetUser}
-      style={{
-        color: '#1890ff',
-        cursor: 'pointer'
-      }}
-    />
-    <DeleteIcon onClick={handleDelete}
-      style={{
-        color: '#ff0000',
-        cursor: 'pointer'
-      }}
-    />
-  </div>
-}
-
-
+  return (
+    <div className="icon-edit-data">
+      <EditIcon
+        onClick={handleSetUser}
+        style={{
+          color: '#1890ff',
+          cursor: 'pointer',
+        }}
+      />
+      <DeleteIcon
+        onClick={handleDelete}
+        style={{
+          color: '#ff0000',
+          cursor: 'pointer',
+        }}
+      />
+    </div>
+  );
+};
 
 function createData(id, no, email, username, level, aksi) {
   return { id, no, email, username, level, aksi };
@@ -73,22 +75,29 @@ const TableAdmin = ({ data, setUser, getUsers }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
   const dataTable = data.map((user, index) => {
-    return createData(user.id, index + 1, user.email, user.name, user.role, <ActionIcon data={
-      {
-        email: user.email,
-        username: user.name,
-        role: user.role,
-        id: user.id
-      }
-    } setUser={setUser} getUsers={getUsers} />);
-  }
-  );
+    return createData(
+      user.id,
+      index + 1,
+      user.email,
+      user.name,
+      user.role,
+      <ActionIcon
+        data={{
+          email: user.email,
+          username: user.name,
+          role: user.role,
+          id: user.id,
+        }}
+        setUser={setUser}
+        getUsers={getUsers}
+      />
+    );
+  });
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
@@ -131,7 +140,5 @@ const TableAdmin = ({ data, setUser, getUsers }) => {
     </div>
   );
 };
-
-
 
 export default TableAdmin;

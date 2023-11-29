@@ -1,4 +1,3 @@
-import React from 'react';
 import './GuruTendik.css';
 import Navbar from '../components/Navbar';
 

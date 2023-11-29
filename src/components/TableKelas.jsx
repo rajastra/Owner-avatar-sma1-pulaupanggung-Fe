@@ -7,21 +7,19 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import * as React from 'react';
+import axios from 'axios';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useState } from 'react';
+import { message } from 'antd';
 
 const columns = [
   { id: 'no', label: 'No', minWidth: 170 },
-  { id: 'kelas', label: 'Kelas', minWidth: 100 },
+  { id: 'name', label: 'Kelas', minWidth: 100 },
+
   {
-    id: 'ruangan',
-    label: 'Ruangan',
-    minWidth: 170,
-    align: 'right',
-  },
-  {
-    id: 'waliKelas',
-    label: 'Wali Kelas',
+    id: 'deskripsi',
+    label: 'Deskripsi',
     minWidth: 170,
     align: 'right',
   },
@@ -33,27 +31,72 @@ const columns = [
   },
 ];
 
-const editIcon = (
-  <div className="icon-edit-data">
-    <EditIcon />
-    <DeleteIcon />
-  </div>
-);
+const ActionIcon = ({ data, setUser, getUsers }) => {
+  const URL = import.meta.env.VITE_API_URL;
+  const handleSetUser = () => {
+    setUser(data);
+  };
 
-function createData(no, kelas, ruangan, waliKelas, aksi, size) {
-  const density = no / size;
-  return { no, kelas, ruangan, waliKelas, aksi };
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`${URL}/api/v1/classes/${data.id}`);
+      message.success('Berhasil menghapus admin');
+      getUsers();
+    } catch (error) {
+      let msg = error.response.data.message || 'Terjadi kesalahan';
+      message.error(msg);
+    }
+  };
+
+  return (
+    <div className="icon-edit-data">
+      <EditIcon
+        onClick={handleSetUser}
+        style={{
+          color: '#1890ff',
+          cursor: 'pointer',
+        }}
+      />
+      <DeleteIcon
+        onClick={handleDelete}
+        style={{
+          color: '#ff0000',
+          cursor: 'pointer',
+        }}
+      />
+    </div>
+  );
+};
+
+function createData(id, no, name, deskripsi, aksi) {
+  return { id, no, name, deskripsi, aksi };
 }
 
-const rows = [createData('1', 'X IPA 2', 'Al fatah', 'Nurfiyanto', editIcon), createData('2', 'X IPA 3', 'Al nas', 'jupri', editIcon)];
-
-const TableKelas = () => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+const TableKelas = ({ data, setUser, getUsers }) => {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
+
+  const dataTable = data.map((kelas, index) => {
+    return createData(
+      kelas.id,
+      index + 1,
+      kelas.name,
+      kelas.description,
+      <ActionIcon
+        data={{
+          id: kelas.id,
+          name: kelas.name,
+          description: kelas.description,
+        }}
+        setUser={setUser}
+        getUsers={getUsers}
+      />
+    );
+  });
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
@@ -74,7 +117,7 @@ const TableKelas = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+              {dataTable.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {columns.map((column) => {
@@ -91,7 +134,7 @@ const TableKelas = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination rowsPerPageOptions={[10, 25, 100]} component="div" count={rows.length} rowsPerPage={rowsPerPage} page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
+        <TablePagination rowsPerPageOptions={[10, 25, 100]} component="div" count={dataTable.length} rowsPerPage={rowsPerPage} page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
       </Paper>
     </div>
   );
