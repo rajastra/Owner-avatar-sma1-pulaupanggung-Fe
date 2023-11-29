@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import Wrapper from '../assets/wrappers/Navbar';
+
 import logo from '../assets/sma.png';
-import hamburger from '../assets/hamburger.png';
-import { Link } from 'react-router-dom';
-import * as React from 'react';
+
 import { menuItems } from '../menuitems';
 import MenuItems from './MenuItems';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
-import { Checkbox, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, IconButton, Stack, TextField, FormLabel, RadioGroup, Radio } from '@mui/material';
+import { Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField } from '@mui/material';
 import { Button } from 'antd';
 
 const Navbar = () => {

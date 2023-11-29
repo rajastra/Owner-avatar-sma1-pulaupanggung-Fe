@@ -487,7 +487,7 @@ display: flex;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-
+  
   
    
   }
@@ -903,15 +903,64 @@ height: 107.884px;
 
 .container-card-data-dashboard{
   background-color: var(--grey-300);
-  display: flex;
+  display: grid;
+  width: max-content;
+  grid-template-columns: 1fr;
   padding: 26px 17px;
   gap: 25px;
   border-top: 2px solid #000;
+    margin-left: 50px;
+
+}
+
+@media screen and (min-width: 768px) {
+  .container-card-data-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-left: 50px;
+  
+  
+   
+  }
+}
+@media screen and (min-width: 1170px) {
+    .container-card-data-dashboard {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 20px 100px;
+    margin-left: 50px;
+  
+  }
 }
 
 .container-card-statistik-dashboard{
   margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr;
+
 }
+@media screen and (min-width: 768px) {
+  .container-card-statistik-dashboard {
+    display: grid;
+    grid-template-columns: 1fr ;
+    gap: 1rem;
+  
+  
+  
+   
+  }
+}
+@media screen and (min-width: 1170px) {
+    .container-card-statistik-dashboard {
+    grid-template-columns: 1fr  ;
+    gap: 1rem;
+    padding: 20px 100px;
+  
+  
+  }
+}
+
 .card-statistik-murid-dashboard{
   background-color: var(--grey-300);
   padding: 40px;
