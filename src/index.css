@@ -352,11 +352,7 @@ PROJECT CSS
 }
 
 
-.container-news {
-  background-color: #f4f4f4;
-  
-
-  margin: 10px;
+.container-news {  
   border-radius: 5px;
 }
 
@@ -435,18 +431,14 @@ display: flex;
   margin-right: 70px;
   margin-left: 70px;
 }
-.news-image {
-  width: 100%;
- 
-}
-.news{
-    background-color: black;
 
-  display: flex;
+.news{
+  position: relative;
+
   flex-direction: column;
   justify-content: end;
   padding:  30px 70px;
-  
+
 }
  .news-text, .calender-text{
 
@@ -454,7 +446,7 @@ display: flex;
   text-align: start;
 }
 .header-news{
-  margin-top: 100px;
+  margin-trelativeop: 100px;
   margin-bottom: 15px;
   text-align: start;
   font-size: 20px;
@@ -465,6 +457,23 @@ display: flex;
   gap: 8px;
 
 }
+.news-image {
+  width: 100%; /* Set the width to 100% of the parent container */
+  height: auto; /* Maintain the aspect ratio */
+}
+.text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px; /* Adjust padding as needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional overlay background */
+  color: #fff; /* Optional text color */
+}
 .ic-calendar{
   display: flex;
   gap: 8px;
@@ -474,21 +483,23 @@ display: flex;
   width: 14px;
   height: 14px;
 }
+ .section-news {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 
-.news-list {
-  display: flex;
-  flex-direction: column;
-}
-.content-news{
-  display: flex;
-  gap: 1px;
-}
+  
+   
+  }
+
+
+
 @media screen and (min-width: 768px) {
   .section-news {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    padding: 20px 100px;
+  
   
    
   }
@@ -497,6 +508,7 @@ display: flex;
     .section-news {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 1rem;
+      padding: 20px 100px;
   
   }
 }
@@ -1129,4 +1141,8 @@ button span {
 }
 .foto-table{
   width: 50%;
+}
+
+.Container-news-page{
+  margin-top: 100px;
 }
