@@ -1,11 +1,11 @@
 import { Checkbox, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, IconButton, Stack, TextField, FormLabel, RadioGroup, Radio } from '@mui/material';
 import FormControlContext from '@mui/material/FormControl/FormControlContext';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, message } from 'antd';
 import axios from 'axios';
 
-const KelasForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
+const KelasFormEdit = ({ closepopup, open, onEdit, user }) => {
   const [formState, setFormState] = useState({
     name: '',
     description: '',
@@ -28,26 +28,29 @@ const KelasForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
     });
   };
 
+  useEffect(() => {
+    if (open) {
+      setFormState({
+        name: user.name,
+        description: user.description,
+      });
+    }
+  }, [open, user]);
+
   const handleSubmit = async () => {
     // Perform data submission logic here
     try {
-      await axios.post(`${API_URL}/api/v1/classes`, {
+      await axios.patch(`${API_URL}/api/v1/classes/${user.id}`, {
         name: formState.name,
         description: formState.description,
       });
-      // ini contoh buat kalau ada upload file
-      // const response = await axios.post(`${API_URL}/api/v1/users`, formData, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //   },
-      // });
 
       message.success('Berhasil menambahkan admin');
       setFormState({
         name: '',
         description: '',
       });
-      onCreate();
+      onEdit();
     } catch (error) {
       let msg = error.response?.data?.message ?? 'Terjadi kesalahan';
       message.error(msg);
@@ -56,12 +59,6 @@ const KelasForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
 
   return (
     <div className="container-murid-form-dialog">
-      <div className="header-murid-form">
-        <Button onClick={functionopenpopup} className="btn-add-murid">
-          Tambah Kelas
-        </Button>
-        <TextField variant="outlined" label="Search"></TextField>
-      </div>
       <Dialog
         // fullScreen
         open={open}
@@ -90,4 +87,4 @@ const KelasForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
     </div>
   );
 };
-export default KelasForm;
+export default KelasFormEdit;
