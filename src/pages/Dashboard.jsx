@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined, LockOutlined } from '@ant-design/icons';
-import { Layout, Menu, Button, theme } from 'antd';
+import { Layout, Menu, Button, theme, message } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 import logo from '../assets/sma.png';
 import profile from '../assets/profile.png';
@@ -10,6 +12,7 @@ import profile from '../assets/profile.png';
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [percentage, setPercentage] = useState(50);
+  const navigate = useNavigate();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -68,6 +71,21 @@ const Dashboard = () => {
               icon: <UserAddOutlined />,
               label: <Link to="/admin">Admin</Link>,
             },
+            {
+              key: '/logout',
+              icon: <UserAddOutlined />,
+              label: <p>logout</p>,
+              // make this on the bottom
+              style: {
+                position: 'absolute',
+                bottom: 0,
+              },
+              onClick: () => {
+                Cookies.remove('token');
+                navigate('/login');
+                message.success('Berhasil Logout');
+              }
+            },
           ]}
         />
       </Sider>
@@ -116,12 +134,12 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className="profile-pengguna-ubah-password-dashboard">
-                    <div className="icon-lock-dashboard">
+                    {/* <div className="icon-lock-dashboard">
                       <LockOutlined />
-                    </div>
-                    <div>
+                    </div> */}
+                    {/* <div>
                       <span className="text-ubah-password">Ubah Password</span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

@@ -9,8 +9,9 @@ import TableRow from '@mui/material/TableRow';
 import * as React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import logo from '../assets/sma.png';
-import react from '../assets/react.svg'
+import axios from 'axios';
+import { message } from 'antd';
+
 
 const columns = [
   { id: 'no' },
@@ -22,19 +23,57 @@ const columns = [
   { id: 'aksi', label: 'Aksi', minWidth: 100, align: 'right' },
 ];
 
-const editIcon = (
-  <div className="icon-edit-data">
-    <EditIcon />
-    <DeleteIcon />
-  </div>
-);
+// const ActionIcon = ({ data, setUser, getBerita }) => {
+//   const URL = import.meta.env.VITE_API_URL;
+//   const handleSetUser = () => {
+//     setUser(data);
+//   };
+//   const handleDelete = async () => {
+//     try {
+//       await axios.delete(`${URL}/api/v1/beritas/${data.id}`);
+//       message.success('Berhasil menghapus murid');
+//       getBerita();
+//     } catch (error) {
+//       // console.log(data.id);
+//       let msg = error.response.data.message || 'Terjadi Kesalahan';
+//       message.error(msg);
+//     }
+//   };
 
-const fotoTable = (
-    <img className='foto-table' src={logo} roundedCircle></img>
-);
-const fotoTable2 = (
-    <img className='foto-table' src={react} roundedCircle></img>
-);
+//   return (
+//     <div className="icon-edit-data">
+//       <EditIcon
+//         onClick={handleSetUser}
+//         style={{
+//           color: '#1890ff',
+//           cursor: 'pointer',
+//         }}
+//       />
+//       <DeleteIcon
+//         onClick={handleDelete}
+//         style={{
+//           color: '#ff0000',
+//           cursor: 'pointer',
+//         }}
+//       />
+//     </div>
+//   );
+// };
+
+
+// const editIcon = (
+//   <div className="icon-edit-data">
+//     <EditIcon />
+//     <DeleteIcon />
+//   </div>
+// );
+
+// const fotoTable = (
+//     <img className='foto-table' src={logo} roundedCircle></img>
+// );
+// const fotoTable2 = (
+//     <img className='foto-table' src={react} roundedCircle></img>
+// );
 
 const ActionIcon = ({ data, setUser, getUsers }) => {
   const URL = import.meta.env.VITE_API_URL;
@@ -43,7 +82,7 @@ const ActionIcon = ({ data, setUser, getUsers }) => {
   };
   const handleDelete = async () => {
     try {
-      await axios.delete(`${URL}/api/v1/students/${data.id}`);
+      await axios.delete(`${URL}/api/v1/beritas/${data.id}`);
       message.success('Berhasil menghapus Postingan');
       getUsers();
     } catch (error) {
@@ -93,12 +132,12 @@ const TablePost = ({ data, setUser, getUsers }) => {
       index + 1,
       post.title,
       post.description,
-      post.kategori,
+      post.Kategori.name,
       <ActionIcon
         data={{
           title: post.title,
           description: post.description,
-          kategori: post.kategori,
+          kategori: post.Kategori.name,
           id: post.id,
         }}
         setUser={setUser}

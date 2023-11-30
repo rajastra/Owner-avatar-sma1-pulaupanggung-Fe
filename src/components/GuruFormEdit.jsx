@@ -49,14 +49,14 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
   const handleSubmit = async () => {
     // Perform data submission logic here
     try {
-      await axios.post(`${API_URL}/api/v1/teachers`, {
+      await axios.patch(`${API_URL}/api/v1/teachers/${user.id}`, {
         nip: formState.nip,
         name: formState.name,
         address: formState.address,
         email: formState.email,
         phone_number: formState.phone_number,
       });
-      message.success('Berhasil menambahkan Guru');
+      message.success('Berhasil memperbaruhi data Guru');
       setFormState({
         nip: '',
         name: '',
@@ -73,7 +73,7 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
 
   return (
     <div className="container-murid-form-dialog">
-      
+
       <Dialog
         // fullScreen
         open={open}
@@ -95,10 +95,10 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
             <TextField variant="outlined" label="Email" name="email" onChange={handleChange} value={formState.email}></TextField>
             <TextField variant="outlined" label="Alamat" name="address" onChange={handleChange} value={formState.address}></TextField>
             <TextField variant="outlined" label="No. Telepon" name="phone_number" onChange={handleChange} value={formState.phone_number}></TextField>
-            
+
             <div className="upload-photo-container">
-                <FormLabel id="label">Photo</FormLabel>
-                <input type="file" id="myFile" name="filename"></input>
+              <FormLabel id="label">Photo</FormLabel>
+              <input type="file" id="myFile" name="filename"></input>
             </div>
 
             <Button onClick={handleSubmit} className="btn-save-murid">
