@@ -1,5 +1,6 @@
 import News from '../components/News';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Berita = () => {
   const [newsData, setNewsData] = useState([]);
@@ -32,9 +33,11 @@ const Berita = () => {
       </div>
 
       <div className="section-news">
-        {newsData.map((data) => {
-          return <News key={data.id} name={data.title} type={'news'} photo={data.photo_url} />;
-        })}
+        {newsData.map((data) => (
+          <Link to={`/berita/detail/${data.id}`} key={data.id}>
+            <News name={data.title} type={'news'} photo={data.photo_url} />
+          </Link>
+        ))}
       </div>
     </div>
   );

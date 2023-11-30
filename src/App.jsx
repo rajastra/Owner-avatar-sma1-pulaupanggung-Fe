@@ -18,6 +18,7 @@ import KelolaPost from './pages/KelolaPost';
 import KelolaGuru from './pages/KelolaGuru';
 import News from './pages/News';
 import Kegiatan from './pages/Kegiatan';
+import NewsDetail from './pages/NewsDetail';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         element: <Kegiatan />,
         path: '/kegiatan',
+      },
+      {
+        element: <NewsDetail />,
+        path: '/berita/detail/:id',
       },
     ],
   },

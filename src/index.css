@@ -1208,3 +1208,29 @@ button span {
 .Container-news-page{
   margin-top: 100px;
 }
+
+
+.news-detail-container {
+
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.news-detail-title {
+  padding-top: 100px;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.news-detail-photo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.news-detail-description {
+  font-size: 16px;
+  line-height: 1.5;
+}
