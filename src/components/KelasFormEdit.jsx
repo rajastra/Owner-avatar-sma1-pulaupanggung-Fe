@@ -45,7 +45,7 @@ const KelasFormEdit = ({ closepopup, open, onEdit, user }) => {
         description: formState.description,
       });
 
-      message.success('Berhasil menambahkan admin');
+      message.success('Berhasil menambahkan kelas');
       setFormState({
         name: '',
         description: '',

@@ -43,7 +43,6 @@ const AdminFormEdit = ({ closepopup, open, onEdit, user }) => {
     }
   }, [open, user]);
 
-
   const handleSubmit = async () => {
     // Perform data submission logic here
     try {
@@ -52,9 +51,7 @@ const AdminFormEdit = ({ closepopup, open, onEdit, user }) => {
         email: formState.email,
         password: formState.password,
         role: formState.role,
-      },
-
-      );
+      });
       message.success('Berhasil menambahkan admin');
       setFormState({
         nama: '',
@@ -87,35 +84,10 @@ const AdminFormEdit = ({ closepopup, open, onEdit, user }) => {
         <DialogContent>
           {/* <DialogContentText>Do you want remove this user?</DialogContentText> */}
           <Stack spacing={2} margin={2}>
-            <TextField
-              variant="outlined"
-              label="Nama"
-              name="nama"
-              onChange={handleChange}
-              value={formState.nama}
-            ></TextField>
-            <TextField
-              variant="outlined"
-              label="Email"
-              name="email"
-              onChange={handleChange}
-              value={formState.email}
-            ></TextField>
-            <TextField
-              variant="outlined"
-              label="Password"
-              name="password"
-              onChange={handleChange}
-              value={formState.password}
-            ></TextField>
-            <Select
-              labelId="demo-simple-select-label"
-              id="role"
-              label="Role"
-              name="role"
-              value={formState.role}
-              onChange={handleChange}
-            >
+            <TextField variant="outlined" label="Nama" name="nama" onChange={handleChange} value={formState.nama}></TextField>
+            <TextField variant="outlined" label="Email" name="email" onChange={handleChange} value={formState.email}></TextField>
+            <TextField variant="outlined" label="Password" name="password" onChange={handleChange} value={formState.password}></TextField>
+            <Select labelId="demo-simple-select-label" id="role" label="Role" name="role" value={formState.role} onChange={handleChange}>
               <MenuItem value={'admin'}>Admin</MenuItem>
               <MenuItem value={'user'}>user</MenuItem>
               <MenuItem value={'laboran'}>Laboran</MenuItem>

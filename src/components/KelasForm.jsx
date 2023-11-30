@@ -42,7 +42,7 @@ const KelasForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
       //   },
       // });
 
-      message.success('Berhasil menambahkan admin');
+      message.success('Berhasil menambahkan kelas');
       setFormState({
         name: '',
         description: '',
