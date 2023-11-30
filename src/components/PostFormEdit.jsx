@@ -59,7 +59,7 @@ const PostForm = ({ closepopup, open, onEdit, user }) => {
         },
       });
 
-      message.success('Berhasil memperbaruhi data postingan');
+      message.success('Berhasil memperbaharui data postingan');
       setFormState({
         title: '',
         description: '',

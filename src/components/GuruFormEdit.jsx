@@ -56,7 +56,7 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
         email: formState.email,
         phone_number: formState.phone_number,
       });
-      message.success('Berhasil memperbaruhi data Guru');
+      message.success('Berhasil memperbaharui data Guru');
       setFormState({
         nip: '',
         name: '',
