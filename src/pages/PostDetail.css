@@ -1,0 +1,16 @@
+.post-container{
+    width: 1100px;
+}
+
+.post-container .kategori{
+    text-align: left;
+    font-size: 16px;
+    font-family: 'Noto Sans', Helvetica;
+}
+
+.post-container .isi{
+    text-align: justify;
+    font-size: 16px;
+    font-family: "Inria Serif", Helvetica;
+    color: black;
+}
