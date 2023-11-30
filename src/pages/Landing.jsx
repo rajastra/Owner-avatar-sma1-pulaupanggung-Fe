@@ -29,8 +29,8 @@ const Landing = () => {
       <InfoSchool />
       <InfoCards />
       <Akreditasi />
-      <Newslist />
-      <NewsKegiatanList />
+      {/* <Newslist />
+      <NewsKegiatanList /> */}
       <Motivate />
       {/* <Footer /> */}
     </>

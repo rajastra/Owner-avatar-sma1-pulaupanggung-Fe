@@ -9,6 +9,7 @@ import MuridForm from '../components/MuridForm';
 import TableMurid from '../components/TableMurid';
 import TablePost from '../components/TablePost';
 import PostForm from '../components/PostForm';
+import axios from 'axios';
 
 const KelolaPost = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -32,7 +33,7 @@ const KelolaPost = () => {
   const handleEdit = (user) => {
     setIsEdit(true);
     setUser(user);
-  }
+  };
 
   const functionopenpopup = () => {
     openchange(true);
@@ -45,12 +46,12 @@ const KelolaPost = () => {
   const onCreate = () => {
     getUsers();
     openchange(false);
-  }
+  };
 
   const onEdit = () => {
     getUsers();
     setIsEdit(false);
-  }
+  };
 
   useEffect(() => {
     getUsers();
