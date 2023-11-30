@@ -1,11 +1,11 @@
 import { Checkbox, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, IconButton, Stack, TextField, FormLabel, RadioGroup, Radio } from '@mui/material';
 import FormControlContext from '@mui/material/FormControl/FormControlContext';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, message } from 'antd';
 import axios from 'axios';
 
-const GuruForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
+const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
   const [formState, setFormState] = useState({
     nip: '',
     name: '',
@@ -34,6 +34,18 @@ const GuruForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
     });
   };
 
+  useEffect(() => {
+    if (open) {
+      setFormState({
+        nip: user.nip,
+        name: user.name,
+        address: user.address,
+        email: user.email,
+        phone_number: user.phone_number,
+      });
+    }
+  }, [open, user]);
+
   const handleSubmit = async () => {
     // Perform data submission logic here
     try {
@@ -52,7 +64,7 @@ const GuruForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
         email: '',
         phone_number: '',
       });
-      onCreate();
+      onEdit();
     } catch (error) {
       let msg = error.response?.data?.message ?? 'Terjadi kesalahan';
       message.error(msg);
@@ -61,12 +73,7 @@ const GuruForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
 
   return (
     <div className="container-murid-form-dialog">
-      <div className="header-murid-form">
-        <Button onClick={functionopenpopup} className="btn-add-murid">
-          Tambah Data Guru & Tendik
-        </Button>
-        <TextField variant="outlined" label="Search" className='Search'></TextField>
-      </div>
+      
       <Dialog
         // fullScreen
         open={open}
@@ -103,4 +110,4 @@ const GuruForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
     </div>
   );
 };
-export default GuruForm;
+export default GuruFormEdit;

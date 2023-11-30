@@ -1,12 +1,12 @@
 import { Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField, FormLabel } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, message } from 'antd';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import axios from 'axios';
 
-const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
+const PostForm = ({ closepopup, open, onEdit, user }) => {
   const [formState, setFormState] = useState({
     title: '',
     description: '',
@@ -30,6 +30,15 @@ const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
     });
   };
 
+  useEffect(() => {
+    if (open) {
+      setFormState({
+        title: user.title,
+        description: user.description,
+        kategori: user.kategori,
+      });
+    }
+  }, [open, user]);
 
   const handleSubmit = async () => {
     // Perform data submission logic here
@@ -53,7 +62,7 @@ const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
         description: '',
         kategori: '',
       });
-      onCreate();
+      onEdit();
     } catch (error) {
       let msg = error.response.data.message || 'Terjadi kesalahan';
       message.error(msg);
@@ -62,12 +71,6 @@ const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
 
   return (
     <div className="container-murid-form-dialog">
-      <div className="header-murid-form">
-        <Button onClick={functionopenpopup} className="btn-add-murid">
-          Tambah Postingan
-        </Button>
-        <TextField variant="outlined" label="Search" className="Search"></TextField>
-      </div>
       <Dialog
         // fullScreen
         open={open}
