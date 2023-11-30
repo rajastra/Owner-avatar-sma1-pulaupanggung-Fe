@@ -420,9 +420,8 @@ PROJECT CSS
 
 
 .content-news {
-  display: flex;
-  
-  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .logo-news {
 display: flex;

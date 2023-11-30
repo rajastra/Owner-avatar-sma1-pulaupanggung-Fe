@@ -44,20 +44,19 @@ export default function Login() {
                 <p className='p2'>di Website SMAN 1 Pulau Panggung</p>
             </div><br></br>
             <form onSubmit={handleSubmit} id='form'>
-                <div className='username input-user'>
+                <div className='username input-user form-input-login'>
                     <input type="text" name='username' id="username" placeholder="Email" value={inputs.username || ""} onChange={handleChange} disabled={isLoading}></input>
                     <i className='icon1'><GoPersonFill /></i>
-                </div><br></br>
-                <div className='password input-user'>
+                </div>
+                <div className='password input-user form-input-login'>
                     <input type="password" name='password' id="password" placeholder="Password" value={inputs.password || ""} onChange={handleChange} disabled={isLoading}></input>
                     <i className='icon2'><BiSolidLock /></i>
-                </div><br></br>
-                <div className='check'>
-                    <input type="checkbox" name="remember"></input>Remember Me
-                </div><br></br>
-                <button className='sign-in' type="submit" disabled={isLoading}>
-                    {isLoading ? 'Loading...' : 'Sign In'}
-                </button>
+                </div>
+                <div className="button-container">
+                    <button className='sign-in' type="submit" disabled={isLoading}>
+                        {isLoading ? 'Loading...' : 'Sign In'}
+                    </button>
+                </div>
             </form>
         </div>
     )
