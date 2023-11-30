@@ -29,7 +29,9 @@ const Navbar = () => {
             {menuItems.map((menu, index) => {
               return <MenuItems items={menu} key={index} />;
             })}
-            <NavLink to="/login">
+            <NavLink to="/login" style={{
+              cursor: 'pointer',
+            }}>
               <button className="btn-login" type="submit">
                 Login
               </button>

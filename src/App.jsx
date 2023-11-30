@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { HomeLayoutWithNavbar, Landing, HomeLayoutWithoutNavbar } from './pages';
 import Profile from './pages/Profile';
+import RequireLogin from './auth/RequireLogin';
 
 import Dashboard from './pages/Dashboard';
 import Kelas from './pages/Kelas';
@@ -65,19 +66,19 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: <Dashboard />,
+    element: <RequireLogin><Dashboard /></RequireLogin>,
     path: '/Dashboard',
   },
   {
-    element: <Kelas />,
+    element: <RequireLogin><Kelas /></RequireLogin>,
     path: '/kelas',
   },
   {
-    element: <Murid />,
+    element: <RequireLogin><Murid /></RequireLogin>,
     path: '/murid',
   },
   {
-    element: <Admin />,
+    element: <RequireLogin><Admin /></RequireLogin>,
     path: '/admin',
   },
   {
@@ -85,11 +86,11 @@ const router = createBrowserRouter([
     path: '/login',
   },
   {
-    element: <KelolaPost />,
+    element: <RequireLogin><KelolaPost /></RequireLogin>,
     path: '/postingan',
   },
   {
-    element: <KelolaGuru />,
+    element: <RequireLogin><KelolaGuru /></RequireLogin>,
     path: '/guruandtendik',
   },
 ]);

@@ -2,8 +2,6 @@ import { Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField, FormL
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { Button, message } from 'antd';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
 import axios from 'axios';
 
 const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
@@ -12,6 +10,7 @@ const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
     description: '',
     kategori: '',
   });
+  const [selectedFile, setSelectedFile] = useState(null);
   const API_URL = import.meta.env.VITE_API_URL;
 
   const handleChange = (event) => {
@@ -19,6 +18,10 @@ const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
       ...prevState,
       [event.target.name]: event.target.value,
     }));
+  };
+
+  const handleFileSelect = (event) => {
+    setSelectedFile(event.target.files[0]);
   };
 
   const handleClose = () => {
@@ -30,22 +33,18 @@ const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
     });
   };
 
-
   const handleSubmit = async () => {
-    // Perform data submission logic here
     try {
       await axios.post(`${API_URL}/api/v1/beritas`, {
         title: formState.title,
         description: formState.description,
         kategori: formState.kategori,
-      },
-      );
-      // ini contoh buat kalau ada upload file
-      // const response = await axios.post(`${API_URL}/api/v1/users`, formData, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //   },
-      // });
+        photo_url: selectedFile
+      }, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
       message.success('Berhasil menambahkan postingan');
       setFormState({
@@ -53,6 +52,7 @@ const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
         description: '',
         kategori: '',
       });
+      setSelectedFile(null);
       onCreate();
     } catch (error) {
       let msg = error.response.data.message || 'Terjadi kesalahan';
@@ -86,7 +86,6 @@ const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
           <Stack spacing={2} margin={2}>
             <TextField variant="outlined" label="Judul" name="title" onChange={handleChange} value={formState.title}></TextField>
             <TextField variant="outlined" label="Isi Berita" multiline rows={20} maxRows={20} name="description" onChange={handleChange} value={formState.description}></TextField>
-            <TextField variant="outlined" label="Tanggal"></TextField>
             <TextField variant="outlined" label="Kategori" name="kategori" onChange={handleChange} value={formState.kategori}></TextField>
             {/*<Select labelId="demo-simple-select-label" id="demo-simple-select" value={age} label="Age" onChange={handleChange}>
               <MenuItem value={'News'}>News</MenuItem>
@@ -95,7 +94,7 @@ const PostForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
 
             <div className="upload-photo-container">
               <FormLabel id="label">Photo</FormLabel>
-              <input type="file" id="myFile" name="filename"></input>
+              <input type="file" id="myFile" name="filename" onChange={handleFileSelect}></input>
             </div>
 
             <Button onClick={handleSubmit} className="btn-save-murid">

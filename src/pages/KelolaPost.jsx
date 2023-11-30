@@ -1,6 +1,6 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined } from '@ant-design/icons';
-import { Layout, Menu, Button, theme } from 'antd';
+import { Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import { Link } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ import TableMurid from '../components/TableMurid';
 import TablePost from '../components/TablePost';
 import PostForm from '../components/PostForm';
 import axios from 'axios';
+import PostFormEdit from '../components/PostFormEdit';
 
 const KelolaPost = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -145,6 +146,7 @@ const KelolaPost = () => {
             }}
           >
             <PostForm open={open} closepopup={closepopup} functionopenpopup={functionopenpopup} onCreate={onCreate} />
+            <PostFormEdit open={isEdit} closepopup={closepopup} onEdit={onEdit} user={user} />
             <TablePost data={users} setUser={handleEdit} getUsers={getUsers} />
           </div>
         </Content>

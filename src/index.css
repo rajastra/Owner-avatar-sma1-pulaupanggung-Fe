@@ -359,7 +359,6 @@ PROJECT CSS
 .header-news{
   display: flex;
   flex-direction: column;
-
   color: white;
 }
 .heading-news{
@@ -420,9 +419,8 @@ PROJECT CSS
 
 
 .content-news {
-  display: flex;
-  
-  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .logo-news {
 display: flex;
@@ -437,7 +435,7 @@ display: flex;
 
   flex-direction: column;
   justify-content: end;
-  padding:  30px 70px;
+  height: 200px;
 
 }
  .news-text, .calender-text{
@@ -459,7 +457,7 @@ display: flex;
 }
 .news-image {
   width: 100%; /* Set the width to 100% of the parent container */
-  height: auto; /* Maintain the aspect ratio */
+  height: 100%;
 }
 .text-overlay {
   position: absolute;

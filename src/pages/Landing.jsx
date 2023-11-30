@@ -1,16 +1,13 @@
 import landing_profile from '../assets/landing profile.jpg';
-import InfoCard from '../components/InfoCard';
 import InfoCards from '../components/InfoCards';
 import InfoSchool from '../components/InfoSchool';
 
 import Akreditasi from '../components/Akreditasi';
-import News from '../components/News';
 import Newslist from '../components/Newslist';
 
 import NewsKegiatanList from '../components/NewsKegiatanList';
 
 import Motivate from '../components/Motivate';
-import Footer from '../components/Footer';
 
 export const Banner = () => {
   return (

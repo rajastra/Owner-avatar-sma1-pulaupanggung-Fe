@@ -46,6 +46,12 @@ input[type='password'] {
   font-size: 14px;
 }
 
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
 .sign-in {
   background-color: #595a66;
   border: 1px solid;
@@ -55,9 +61,10 @@ input[type='password'] {
   color: #ffffff;
   font-family: 'Inria Serif', Helvetica;
   font-size: 16px;
-  position: absolute;
-  left: 875px;
-  top: 400px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon1 {
@@ -65,9 +72,7 @@ input[type='password'] {
   height: 50px;
   width: 50px;
   font-size: 40px;
-  position: absolute;
-  right: 385px;
-  top: 202px;
+  margin-left: -50px;
 }
 
 .icon2 {
@@ -75,7 +80,11 @@ input[type='password'] {
   height: 50px;
   width: 50px;
   font-size: 40px;
-  position: absolute;
-  right: 385px;
-  top: 316px;
+  margin-left: -50px;
+}
+
+.form-input-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
