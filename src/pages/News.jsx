@@ -1,7 +1,26 @@
-import { news_data } from '../data';
 import News from '../components/News';
+import { useState, useEffect } from 'react';
 
 const Berita = () => {
+  const [newsData, setNewsData] = useState([]);
+
+  const URL = import.meta.env.VITE_API_URL;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${URL}/api/v1/beritas`);
+        const data = await response.json();
+        setNewsData(data.data);
+        console.log(data.title);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="Container-news-page">
       <div className="header-container">
@@ -13,8 +32,8 @@ const Berita = () => {
       </div>
 
       <div className="section-news">
-        {news_data.map((data) => {
-          return <News {...data} key={data.id} />;
+        {newsData.map((data) => {
+          return <News key={data.id} name={data.title} type={'news'} photo={data.photo_url} />;
         })}
       </div>
     </div>
