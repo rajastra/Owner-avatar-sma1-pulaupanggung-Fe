@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import 'react-toastify/dist/ReactToastify.css';
+// import for styling antd
+import 'antd/dist/antd.css';
 
 import './index.css';
 import { ToastContainer } from 'react-toastify';
