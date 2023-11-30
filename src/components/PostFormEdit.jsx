@@ -56,7 +56,7 @@ const PostForm = ({ closepopup, open, onEdit, user }) => {
       //   },
       // });
 
-      message.success('Berhasil menambahkan admin');
+      message.success('Berhasil menambahkan postingan');
       setFormState({
         title: '',
         description: '',

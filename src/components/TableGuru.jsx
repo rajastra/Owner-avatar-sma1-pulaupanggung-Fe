@@ -43,7 +43,7 @@ const ActionIcon = ({ data, setUser, getUsers }) => {
   const handleDelete = async () => {
     try {
       await axios.delete(`${URL}/api/v1/teachers/${data.id}`);
-      message.success('Berhasil menghapus murid');
+      message.success('Berhasil menghapus Guru');
       getUsers();
     } catch (error) {
       // console.log(data.id);

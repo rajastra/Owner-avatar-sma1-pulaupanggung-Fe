@@ -44,7 +44,7 @@ const GuruForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
         email: formState.email,
         phone_number: formState.phone_number,
       });
-      message.success('Berhasil menambahkan murid');
+      message.success('Berhasil menambahkan Guru');
       setFormState({
         nip: '',
         name: '',
