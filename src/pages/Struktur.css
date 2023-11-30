@@ -15,9 +15,17 @@
   border-width: 100%;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .heading {
+    width: 300px;
+    font-size: 16pt;
+  }
+}
+
 .bagan-struktur {
-  width: 1210px;
-  height: 885px;
+  width: 100%;
+
   border: 1px solid;
   border-color: black;
 }

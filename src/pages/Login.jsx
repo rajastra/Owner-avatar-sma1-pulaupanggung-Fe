@@ -42,7 +42,7 @@ export default function Login() {
             <div className='box'>
                 <p className='p1'>SELAMAT DATANG</p>
                 <p className='p2'>di Website SMAN 1 Pulau Panggung</p>
-            </div><br></br>
+            </div>
             <form onSubmit={handleSubmit} id='form'>
                 <div className='username input-user form-input-login'>
                     <input type="text" name='username' id="username" placeholder="Email" value={inputs.username || ""} onChange={handleChange} disabled={isLoading}></input>
@@ -52,11 +52,11 @@ export default function Login() {
                     <input type="password" name='password' id="password" placeholder="Password" value={inputs.password || ""} onChange={handleChange} disabled={isLoading}></input>
                     <i className='icon2'><BiSolidLock /></i>
                 </div>
-                <div className="button-container">
-                    <button className='sign-in' type="submit" disabled={isLoading}>
-                        {isLoading ? 'Loading...' : 'Sign In'}
-                    </button>
-                </div>
+
+                <button className='sign-in' type="submit" disabled={isLoading}>
+                    {isLoading ? 'Loading...' : 'Sign In'}
+                </button>
+
             </form>
         </div>
     )
