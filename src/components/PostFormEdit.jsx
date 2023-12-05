@@ -5,6 +5,7 @@ import { Button, message } from 'antd';
 import axios from 'axios';
 
 const PostForm = ({ closepopup, open, onEdit, user }) => {
+  const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState({
     title: '',
     description: '',
@@ -46,6 +47,8 @@ const PostForm = ({ closepopup, open, onEdit, user }) => {
   }, [open, user]);
 
   const handleSubmit = async () => {
+    // Perform data submission logic here
+    setLoading(true);
     try {
 
       await axios.patch(`${API_URL}/api/v1/beritas/${user.id}`, {
@@ -71,6 +74,7 @@ const PostForm = ({ closepopup, open, onEdit, user }) => {
       let msg = error.response.data.message || 'Terjadi kesalahan';
       message.error(msg);
     }
+    setLoading(false);
   };
 
   return (
@@ -104,7 +108,7 @@ const PostForm = ({ closepopup, open, onEdit, user }) => {
               <input type="file" id="myFile" name="filename" onChange={handleFileSelect}></input>
             </div>
 
-            <Button onClick={handleSubmit} className="btn-save-murid">
+            <Button onClick={handleSubmit} className="btn-save-murid" loading={loading}>
               Simpan
             </Button>
           </Stack>

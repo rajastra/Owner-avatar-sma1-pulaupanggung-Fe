@@ -7,6 +7,7 @@ import Select from '@mui/material/Select';
 import axios from 'axios';
 
 const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
+  const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState({
     nama: '',
     email: '',
@@ -38,6 +39,7 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
 
   const handleSubmit = async () => {
     // Perform data submission logic here
+    setLoading(true);
     try {
       await axios.post(`${API_URL}/api/v1/users`, {
         name: formState.nama,
@@ -67,6 +69,7 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
       let msg = error.response.data.message || 'Terjadi kesalahan';
       message.error(msg);
     }
+    setLoading(false);
   };
 
   return (
@@ -143,7 +146,7 @@ const AdminForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
               </div>
             </div> */}
 
-            <Button onClick={handleSubmit} className="btn-save-murid">
+            <Button onClick={handleSubmit} className="btn-save-murid" loading={loading}>
               Tambah Admin
             </Button>
           </Stack>

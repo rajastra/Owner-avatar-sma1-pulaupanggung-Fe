@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { HomeLayoutWithNavbar, Landing, HomeLayoutWithoutNavbar } from './pages';
+import { HomeLayoutWithNavbar, Landing } from './pages';
 import Profile from './pages/Profile';
 import RequireLogin from './auth/RequireLogin';
 
@@ -20,6 +20,7 @@ import KelolaGuru from './pages/KelolaGuru';
 import News from './pages/News';
 import Kegiatan from './pages/Kegiatan';
 import NewsDetail from './pages/NewsDetail';
+import KeloProfile from './pages/KelolaProfile';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
   {
     element: <RequireLogin><KelolaGuru /></RequireLogin>,
     path: '/guruandtendik',
+  },
+  {
+    element: <RequireLogin><KeloProfile /></RequireLogin>,
+    path: '/kelolaprofile',
   },
 ]);
 

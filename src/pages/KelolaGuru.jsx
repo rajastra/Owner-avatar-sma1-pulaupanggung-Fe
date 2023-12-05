@@ -1,19 +1,18 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined } from '@ant-design/icons';
-import { Layout, Menu, Button, theme } from 'antd';
+import { Layout, Menu, theme, message } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 import logo from '../assets/sma.png';
-import MuridForm from '../components/MuridForm';
-import TableMurid from '../components/TableMurid';
 import TableGuru from '../components/TableGuru';
 import GuruForm from '../components/GuruForm';
 import GuruFormEdit from '../components/GuruFormEdit';
 
 const KelolaGuru = () => {
-  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -22,6 +21,7 @@ const KelolaGuru = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [user, setUser] = useState({});
   const URL = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
   const getUsers = useCallback(async () => {
     try {
       const response = await axios.get(`${URL}/api/v1/teachers`);
@@ -108,9 +108,29 @@ const KelolaGuru = () => {
               label: <Link to="/postingan">Postingan</Link>,
             },
             {
+              key: '/kelolaprofile',
+              icon: <UploadOutlined />,
+              label: <Link to="/kelolaprofile">Profile</Link>,
+            },
+            {
               key: '/admin',
               icon: <UserAddOutlined />,
               label: <Link to="/admin">Admin</Link>,
+            },
+            {
+              key: '/logout',
+              icon: <UserAddOutlined />,
+              label: <p>logout</p>,
+              // make this on the bottom
+              style: {
+                position: 'absolute',
+                bottom: 0,
+              },
+              onClick: () => {
+                Cookies.remove('token');
+                navigate('/login');
+                message.success('Berhasil Logout');
+              }
             },
           ]}
         />
