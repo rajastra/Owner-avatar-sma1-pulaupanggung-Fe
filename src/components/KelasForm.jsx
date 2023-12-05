@@ -1,11 +1,11 @@
-import { Checkbox, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, IconButton, Stack, TextField, FormLabel, RadioGroup, Radio } from '@mui/material';
-import FormControlContext from '@mui/material/FormControl/FormControlContext';
+import { Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { Button, message } from 'antd';
 import axios from 'axios';
 
 const KelasForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
+  const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState({
     name: '',
     description: '',
@@ -30,6 +30,7 @@ const KelasForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
 
   const handleSubmit = async () => {
     // Perform data submission logic here
+    setLoading(true);
     try {
       await axios.post(`${API_URL}/api/v1/classes`, {
         name: formState.name,
@@ -52,6 +53,7 @@ const KelasForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
       let msg = error.response?.data?.message ?? 'Terjadi kesalahan';
       message.error(msg);
     }
+    setLoading(false);
   };
 
   return (
@@ -81,7 +83,7 @@ const KelasForm = ({ closepopup, functionopenpopup, open, onCreate }) => {
             <TextField variant="outlined" name="name" onChange={handleChange} label="Nama Kelas" value={formState.name}></TextField>
             <TextField variant="outlined" name="description" onChange={handleChange} value={formState.description} label="Deskripsi Kelas"></TextField>
 
-            <Button onClick={handleSubmit} className="btn-save-murid">
+            <Button onClick={handleSubmit} className="btn-save-murid" loading={loading}>
               Tambah Kelas
             </Button>
           </Stack>

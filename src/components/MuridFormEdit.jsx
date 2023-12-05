@@ -1,12 +1,11 @@
-import { Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField, FormControlLabel, FormLabel, RadioGroup, Radio } from '@mui/material';
+import { Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useEffect, useState } from 'react';
 import { Button, message } from 'antd';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
 import axios from 'axios';
 
 const MuridFormEdit = ({ closepopup, open, onEdit, user }) => {
+  const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState({
     nama: '',
     nis: '',
@@ -46,6 +45,7 @@ const MuridFormEdit = ({ closepopup, open, onEdit, user }) => {
 
   const handleSubmit = async () => {
     // Perform data submission logic here
+    setLoading(true);
     try {
       await axios.patch(`${API_URL}/api/v1/students/${user.id}`, {
         name: formState.nama,
@@ -72,6 +72,7 @@ const MuridFormEdit = ({ closepopup, open, onEdit, user }) => {
       let msg = error.response.data.message || 'Terjadi kesalahan';
       message.error(msg);
     }
+    setLoading(false);
   };
 
   return (
@@ -103,7 +104,7 @@ const MuridFormEdit = ({ closepopup, open, onEdit, user }) => {
               <FormControlLabel value="Perempuan" control={<Radio />} label="Male" />
             </RadioGroup> */}
 
-            <Button onClick={handleSubmit} className="btn-save-murid">
+            <Button onClick={handleSubmit} className="btn-save-murid" loading={loading}>
               Tambah Murid
             </Button>
           </Stack>

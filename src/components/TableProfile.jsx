@@ -13,15 +13,12 @@ import { useState } from 'react';
 import { message } from 'antd';
 
 const columns = [
-  { id: 'no', label: 'No', minWidth: 100, align: 'left' },
-  { id: 'photo', label: 'Photo', minWidth: 170, align: 'left' },
+  { id: 'no', label: 'No', minWidth: 170, align: 'left' },
+  { id: 'code', label: 'Kode', minWidth: 170, align: 'left' },
+  { id: 'photo', label: 'Photo', minWidth: 100 },
   { id: 'nama', label: 'Nama', minWidth: 170, align: 'left' },
-  { id: 'jabatan', label: 'Jabatan', minWidth: 170, align: 'left' },
-  { id: 'npy', label: 'NPY', minWidth: 100 },
-  { id: 'email', label: 'Email', minWidth: 100 },
-  { id: 'alamat', label: 'Alamat', minWidth: 100 },
-  { id: 'phone_number', label: 'No. Telepon', minWidth: 100 },
-  { id: 'aksi', label: 'Aksi', minWidth: 170, align: 'right' },
+  { id: 'deskripsi', label: 'Deskripsi', minWidth: 100 },
+  { id: 'aksi', label: 'Aksi', minWidth: 100, align: 'right' },
 ];
 
 
@@ -40,8 +37,8 @@ const ActionIcon = ({ data, setUser, getUsers }) => {
   };
   const handleDelete = async () => {
     try {
-      await axios.delete(`${URL}/api/v1/teachers/${data.id}`);
-      message.success('Berhasil menghapus Guru');
+      await axios.delete(`${URL}/api/v1/profiles/${data.id}`);
+      message.success('Berhasil menghapus profile');
       getUsers();
     } catch (error) {
       // console.log(data.id);
@@ -71,13 +68,12 @@ const ActionIcon = ({ data, setUser, getUsers }) => {
 };
 
 
-function createData(id, no, photo, jabatan, nama, npy, email, alamat, phone_number, aksi) {
-  return { id, no, photo, jabatan, nama, npy, email, alamat, phone_number, aksi };
+function createData(id, no, photo, nama, code, deskripsi, aksi) {
+  return { id, no, photo, nama, deskripsi, code, aksi };
 }
 
-// const rows = [createData('1', fotoTable, 'Mala', '222222', 'Guru Fisika', editIcon), createData('2', fotoTable2, 'Alam', '333333', 'Guru Olahraga', editIcon)];
 
-const TableGuru = ({ data, setUser, getUsers }) => {
+const TableProfile = ({ data, setUser, getUsers }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -85,26 +81,21 @@ const TableGuru = ({ data, setUser, getUsers }) => {
     setPage(newPage);
   };
 
-  const dataTable = data.map((guru, index) => {
+  const dataTable = data.map((profile, index) => {
     return createData(
-      guru.id,
+      profile.id,
       index + 1,
-      <img className='foto-table' src={guru.photo}></ img>,
-      guru.jabatan,
-      guru.name,
-      guru.nip,
-      guru.email,
-      guru.address,
-      guru.phone_number,
+      <img className='foto-table' src={profile.photo}></ img>,
+      profile.name,
+      profile.code,
+      profile.description,
       <ActionIcon
         data={{
-          name: guru.name,
-          nip: guru.nip,
-          email: guru.nip,
-          address: guru.address,
-          phone_number: guru.phone_number,
-          id: guru.id,
-          jabatan: guru.jabatan,
+          id: profile.id,
+          name: profile.name,
+          description: profile.description,
+          photo: profile.photo,
+          code: profile.code
         }}
         setUser={setUser}
         getUsers={getUsers}
@@ -153,4 +144,4 @@ const TableGuru = ({ data, setUser, getUsers }) => {
     </div>
   );
 };
-export default TableGuru;
+export default TableProfile;

@@ -4,14 +4,12 @@ import { useEffect, useState } from 'react';
 import { Button, message } from 'antd';
 import axios from 'axios';
 
-const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
+const ProfileFormEdit = ({ closepopup, open, onEdit, user }) => {
   const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState({
-    nip: '',
     name: '',
-    address: '',
-    email: '',
-    phone_number: '',
+    description: '',
+    code: '',
   });
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -33,24 +31,18 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
   const handleClose = () => {
     closepopup();
     setFormState({
-      nip: '',
       name: '',
-      address: '',
-      email: '',
-      phone_number: '',
-      jabatan: '',
+      description: '',
+      code: '',
     });
   };
 
   useEffect(() => {
     if (open) {
       setFormState({
-        nip: user.nip,
         name: user.name,
-        address: user.address,
-        email: user.email,
-        phone_number: user.phone_number,
-        jabatan: user.jabatan,
+        description: user.description,
+        code: user.code,
       });
       setSelectedFile(user.photo);
     }
@@ -60,26 +52,21 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
     // Perform data submission logic here
     setLoading(true);
     try {
-      await axios.patch(`${API_URL}/api/v1/teachers/${user.id}`, {
-        nip: formState.nip,
+      await axios.patch(`${API_URL}/api/v1/profiles/${user.id}`, {
         name: formState.name,
-        address: formState.address,
-        email: formState.email,
-        phone_number: formState.phone_number,
-        jabatan: formState.jabatan,
+        description: formState.description,
+        code: formState.code,
         photo: selectedFile
       }, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      message.success('Berhasil memperbaharui data Guru');
+      message.success('Berhasil memperbaharui data profile');
       setFormState({
-        nip: '',
         name: '',
-        address: '',
-        email: '',
-        phone_number: '',
+        description: '',
+        code: '',
       });
       setSelectedFile(null);
       onEdit();
@@ -101,7 +88,7 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
         maxWidth="sm"
       >
         <DialogTitle>
-          Tambah Guru{' '}
+          Edit Profile{' '}
           <IconButton onClick={handleClose} style={{ float: 'right' }}>
             <CloseIcon></CloseIcon>
           </IconButton>{' '}
@@ -109,12 +96,9 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
         <DialogContent>
           {/* <DialogContentText>Do you want remove this user?</DialogContentText> */}
           <Stack spacing={2} margin={2}>
-            <TextField variant="outlined" label="NPY" name="nip" onChange={handleChange} value={formState.nip}></TextField>
             <TextField variant="outlined" label="Nama" name="name" onChange={handleChange} value={formState.name}></TextField>
-            <TextField variant="outlined" label="Jabatan" name="jabatan" onChange={handleChange} value={formState.jabatan}></TextField>
-            <TextField variant="outlined" label="Email" name="email" onChange={handleChange} value={formState.email}></TextField>
-            <TextField variant="outlined" label="Alamat" name="address" onChange={handleChange} value={formState.address}></TextField>
-            <TextField variant="outlined" label="No. Telepon" name="phone_number" onChange={handleChange} value={formState.phone_number}></TextField>
+            <TextField variant="outlined" label="Kode" name="code" onChange={handleChange} value={formState.code}></TextField>
+            <TextField variant="outlined" label="Deskripsi" multiline rows={15} maxRows={15} name="description" onChange={handleChange} value={formState.description}></TextField>
 
             <div className="upload-photo-container">
               <FormLabel id="label">Photo</FormLabel>
@@ -130,4 +114,4 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
     </div>
   );
 };
-export default GuruFormEdit;
+export default ProfileFormEdit;

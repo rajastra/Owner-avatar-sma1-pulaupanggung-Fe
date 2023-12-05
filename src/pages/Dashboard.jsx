@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined, LockOutlined } from '@ant-design/icons';
-import { Layout, Menu, Button, theme, message } from 'antd';
+import { useState } from 'react';
+import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined } from '@ant-design/icons';
+import { Layout, Menu, theme, message } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ import logo from '../assets/sma.png';
 import profile from '../assets/profile.png';
 
 const Dashboard = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  // eslint-disable-next-line
   const [percentage, setPercentage] = useState(50);
   const navigate = useNavigate();
   const {
@@ -65,6 +65,11 @@ const Dashboard = () => {
               key: '/postingan',
               icon: <UploadOutlined />,
               label: <Link to="/postingan">Postingan</Link>,
+            },
+            {
+              key: '/kelolaprofile',
+              icon: <UploadOutlined />,
+              label: <Link to="/kelolaprofile">Profile</Link>,
             },
             {
               key: '/admin',
