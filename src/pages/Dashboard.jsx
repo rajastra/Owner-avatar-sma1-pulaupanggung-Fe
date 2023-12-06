@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined } from '@ant-design/icons';
+import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined, LogoutOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme, message } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import { Link } from 'react-router-dom';
@@ -84,7 +84,7 @@ const Dashboard = () => {
             },
             {
               key: '/logout',
-              icon: <UserAddOutlined />,
+              icon: <LogoutOutlined />,
               label: <p>logout</p>,
               // make this on the bottom
               style: {
@@ -254,7 +254,7 @@ const Dashboard = () => {
             textAlign: 'center',
           }}
         >
-          Ant Design ©2023 Created by Ant UED
+          SMA 1 PULAU PANGGUNG ©2023 Created by Intelectual Explorers
         </Footer>
       </Layout>
     </Layout>

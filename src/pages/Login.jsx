@@ -27,6 +27,7 @@ export default function Login() {
                 email: inputs.username,
                 password: inputs.password
             });
+            console.log(response?.data?.data)
             Cookies.set('token', response?.data?.token);
             navigate('/dashboard');
             message.success('Login Success');
