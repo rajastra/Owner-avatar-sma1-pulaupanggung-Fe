@@ -28,7 +28,13 @@ const Dashboard = () => {
           console.log(collapsed, type);
         }}
       >
-        <div className="demo-logo-vertical">
+        <div className="demo-logo-vertical" style={{
+          cursor: 'pointer',
+        }}
+          onClick={() => {
+            navigate('/');
+          }}
+        >
           <div className="image-sidebar-sekolah">
             <img className="logo-sidebar" src={logo} alt="logo sekolah" />
           </div>

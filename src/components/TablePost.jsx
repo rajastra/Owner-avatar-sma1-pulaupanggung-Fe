@@ -15,7 +15,7 @@ import { message } from 'antd';
 
 const columns = [
   { id: 'no' },
-  { id: 'foto', label: 'Photo', minWidth: 100, align: 'left' },
+  { id: 'photo', label: 'Photo', minWidth: 100, align: 'left' },
   { id: 'judul', label: 'Judul', minWidth: 170, align: 'left' },
   { id: 'isiBerita', label: 'Isi Berita', minWidth: 170 },
   { id: 'kategori', label: 'Kategori', minWidth: 100 },
@@ -111,8 +111,8 @@ const ActionIcon = ({ data, setUser, getUsers }) => {
   );
 };
 
-function createData(id, no, judul, isiBerita, kategori, aksi) {
-  return { id, no, judul, isiBerita, kategori, aksi };
+function createData(id, no, judul, photo, isiBerita, kategori, aksi) {
+  return { id, no, judul, photo, isiBerita, kategori, aksi };
 }
 
 //const rows = [createData('1', fotoTable, 'Waspadai 3 Hal Ini', 'Keadaan Indonesia saat ini sangat mengkhawatirkan', '23 Oktober 2023', 'kegiatan', editIcon), createData('2', fotoTable2, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam egestas odio est, facilisis pellentesque lorem egestas id. Phasellus felis dolor, efficitur a volutpat sit amet, tristique eget diam. Vivamus fermentum tincidunt nibh vitae elementum. Praesent pulvinar nulla pharetra risus condimentum eleifend. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam ultrices, arcu at luctus posuere, arcu urna mattis lacus, ut ultricies libero augue vel lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis ut ligula at nunc placerat consectetur sed vel ipsum. Mauris faucibus, nisi non ultrices luctus, dui velit mattis magna, nec feugiat massa tortor id erat.', '23 Oktober 2023', 'news', editIcon)];
@@ -130,6 +130,11 @@ const TablePost = ({ data, setUser, getUsers }) => {
       post.id,
       index + 1,
       post.title,
+      <img className='foto-table' src={post.photo_url} style={{
+        width: '100px',
+        height: '100px',
+        objectFit: 'cover',
+      }}></ img >,
       post.description,
       post.Kategori.name,
       <ActionIcon
