@@ -89,7 +89,12 @@ const TableGuru = ({ data, setUser, getUsers }) => {
     return createData(
       guru.id,
       index + 1,
-      <img className='foto-table' src={guru.photo}></ img>,
+      <img className='foto-table' src={guru.photo} style={{
+        width: '50px',
+        height: '50px',
+        borderRadius: '50%',
+        objectFit: 'cover',
+      }}></ img >,
       guru.jabatan,
       guru.name,
       guru.nip,

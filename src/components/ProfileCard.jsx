@@ -1,5 +1,3 @@
-import kepalaSekolah from '../assets/kepala-sekolah.png';
-
 const ProfileCard = ({ header, image, name, deskripsi }) => {
   return (
     <div className="container-profile-card">

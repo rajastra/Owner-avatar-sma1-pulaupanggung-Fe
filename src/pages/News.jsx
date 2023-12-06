@@ -1,9 +1,12 @@
 import News from '../components/News';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Berita = () => {
   const [newsData, setNewsData] = useState([]);
+  const [filterNews, setFilterNews] = useState([]);
+  // get value from like http://localhost:5173/berita?search=asfaf
+  const location = useLocation();
 
   const URL = import.meta.env.VITE_API_URL;
 
@@ -13,7 +16,6 @@ const Berita = () => {
         const response = await fetch(`${URL}/api/v1/beritas`);
         const data = await response.json();
         setNewsData(data.data);
-        console.log(data.title);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -21,6 +23,19 @@ const Berita = () => {
 
     fetchData();
   }, []);
+
+
+  useEffect(() => {
+    const queryParameters = new URLSearchParams(location.search);
+    const search = queryParameters.get('search');
+
+    const filterData = newsData.filter((data) => {
+      return data.title.toLowerCase().includes(search?.toLowerCase());
+    });
+
+    setFilterNews(filterData);
+  }, [newsData, location.search]);
+
 
   return (
     <div className="Container-news-page">
@@ -31,9 +46,13 @@ const Berita = () => {
           <hr className="line-sub-header" />
         </div>
       </div>
-
+      {/* show jika tidak ada */
+        filterNews.length === 0 && <div
+          style={{ textAlign: 'center', marginTop: '20px' }}
+        >Berita tidak ditemukan</div>
+      }
       <div className="section-news">
-        {newsData.map((data) => (
+        {filterNews.length !== 0 && filterNews.map((data) => (
           <Link to={`/berita/detail/${data.id}`} key={data.id}>
             <News name={data.title} type={'news'} photo={data.photo_url} />
           </Link>

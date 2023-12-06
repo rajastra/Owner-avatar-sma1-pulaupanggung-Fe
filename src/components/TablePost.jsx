@@ -18,7 +18,6 @@ const columns = [
   { id: 'foto', label: 'Photo', minWidth: 100, align: 'left' },
   { id: 'judul', label: 'Judul', minWidth: 170, align: 'left' },
   { id: 'isiBerita', label: 'Isi Berita', minWidth: 170 },
-  { id: 'tanggal', label: 'Tanggal', minWidth: 100 },
   { id: 'kategori', label: 'Kategori', minWidth: 100 },
   { id: 'aksi', label: 'Aksi', minWidth: 100, align: 'right' },
 ];

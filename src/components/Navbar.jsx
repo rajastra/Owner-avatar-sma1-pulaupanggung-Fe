@@ -9,15 +9,26 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField } from '@mui/material';
 import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [open, openchange] = useState(false);
+  const [search, setSearch] = useState('');
   const functionopenpopup = () => {
     openchange(true);
   };
   const closepopup = () => {
     openchange(false);
+    setSearch('')
   };
+
+  const navigate = useNavigate();
+  const movetToBerita = () => {
+    // move to barita and passing the params
+    navigate('/berita?search=' + search);
+    closepopup()
+  };
+
   return (
     <header className="header-navbar-container">
       <div className="nav-area">
@@ -55,9 +66,11 @@ const Navbar = () => {
               <DialogContent>
                 {/* <DialogContentText>Do you want remove this user?</DialogContentText> */}
                 <Stack spacing={2} margin={2}>
-                  <TextField variant="outlined" label="Ketik Disini"></TextField>
-
-                  <Button onClick={closepopup} className="btn-save-murid">
+                  <TextField variant="outlined" label="Ketik Disini"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  ></TextField>
+                  <Button onClick={movetToBerita} className="btn-save-murid" >
                     Search
                   </Button>
                 </Stack>

@@ -6,7 +6,7 @@ const Fasilitas = () => {
     <div className="container-fasilitas">
       <div className="header-profile-card">
         <div className="border-profile-card">
-          <h4 className="header-profile-card">Visi dan Misi</h4>
+          <h4 className="header-profile-card">Fasilitas</h4>
         </div>
       </div>
       <div className="section-fasilitas">
