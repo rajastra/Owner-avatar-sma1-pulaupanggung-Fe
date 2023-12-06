@@ -1,11 +1,11 @@
-import { menuItems } from '../menuitems';
-import MenuItems from './MenuItems';
+import { NavLink } from 'react-router-dom';
+
 const Dropdown = ({ submenus, dropdown }) => {
   return (
     <ul className={`dropdown ${dropdown ? 'show' : ''}`}>
       {submenus.map((submenu, index) => (
         <li key={index} className="menu-items">
-          <a href={submenu.url}>{submenu.title}</a>
+          <NavLink to={submenu.url}>{submenu.title}</NavLink>
         </li>
       ))}
     </ul>

@@ -9,15 +9,15 @@ export const menuItems = [
     submenu: [
       {
         title: 'Profile Sekolah',
-        url: 'profile',
+        url: '/profile',
       },
       {
         title: 'Struktur Organisasi',
-        url: 'struktur',
+        url: '/struktur',
       },
       {
         title: 'Guru dan Tendik',
-        url: 'gurutendik',
+        url: '/gurutendik',
       },
     ],
   },
@@ -27,11 +27,11 @@ export const menuItems = [
     submenu: [
       {
         title: 'Berita',
-        url: 'berita',
+        url: '/berita',
       },
       {
         title: 'Kegiatan',
-        url: 'kegiatan',
+        url: '/kegiatan',
       },
     ],
   },

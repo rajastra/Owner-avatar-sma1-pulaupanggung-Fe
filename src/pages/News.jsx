@@ -18,7 +18,7 @@ const Berita = () => {
       try {
         const response = await fetch(`${URL}/api/v1/beritas`);
         const data = await response.json();
-        setNewsData(data.data);
+        setNewsData(data.data.filter((item) => item.Kategori.name !== 'kegiatan'));
       } catch (error) {
         console.error('Error fetching data:', error);
       }

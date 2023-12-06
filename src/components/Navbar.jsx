@@ -10,10 +10,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Dialog, DialogContent, DialogTitle, IconButton, Stack, TextField } from '@mui/material';
 import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Navbar = () => {
   const [open, openchange] = useState(false);
   const [search, setSearch] = useState('');
+  const token = Cookies.get('token');
   const functionopenpopup = () => {
     openchange(true);
   };
@@ -29,10 +31,18 @@ const Navbar = () => {
     closepopup()
   };
 
+  const moveToLogin = () => {
+    navigate('/login');
+  }
+
+  const moveToDashboard = () => {
+    navigate('/dashboard');
+  }
+
   return (
     <header className="header-navbar-container">
       <div className="nav-area">
-        <NavLink href="/" className="logo">
+        <NavLink to="/" className="logo">
           <img className="navbar-logo" src={logo} alt="" />
         </NavLink>
         <nav>
@@ -40,13 +50,16 @@ const Navbar = () => {
             {menuItems.map((menu, index) => {
               return <MenuItems items={menu} key={index} />;
             })}
-            <NavLink to="/login" style={{
-              cursor: 'pointer',
-            }}>
-              <button className="btn-login" type="submit">
-                Login
-              </button>
-            </NavLink>
+            {!token && <Button className="btn-login" type="submit"
+              onClick={moveToLogin}
+            >
+              Login
+            </Button>}
+            {token && <Button className="btn-login" type="submit"
+              onClick={moveToDashboard}
+            >
+              Dashboard
+            </Button>}
             <Button onClick={functionopenpopup} className="searchIcon">
               <SearchIcon />
             </Button>
