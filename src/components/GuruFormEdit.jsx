@@ -73,7 +73,7 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      message.success('Berhasil memperbaharui data Guru');
+      message.success('Berhasil memperbarui data Guru');
       setFormState({
         nip: '',
         name: '',
@@ -101,7 +101,7 @@ const GuruFormEdit = ({ closepopup, open, onEdit, user }) => {
         maxWidth="sm"
       >
         <DialogTitle>
-          Tambah Guru{' '}
+          Edit Guru{' '}
           <IconButton onClick={handleClose} style={{ float: 'right' }}>
             <CloseIcon></CloseIcon>
           </IconButton>{' '}

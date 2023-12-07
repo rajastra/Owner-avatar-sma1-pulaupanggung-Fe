@@ -46,7 +46,7 @@ const KelasFormEdit = ({ closepopup, open, onEdit, user }) => {
         description: formState.description,
       });
 
-      message.success('Berhasil menambahkan kelas');
+      message.success('Berhasil memperbarui kelas');
       setFormState({
         name: '',
         description: '',
@@ -69,7 +69,7 @@ const KelasFormEdit = ({ closepopup, open, onEdit, user }) => {
         maxWidth="sm"
       >
         <DialogTitle>
-          Tambah Kelas{' '}
+          Edit Kelas{' '}
           <IconButton onClick={handleClose} style={{ float: 'right' }}>
             <CloseIcon color="primary"></CloseIcon>
           </IconButton>{' '}

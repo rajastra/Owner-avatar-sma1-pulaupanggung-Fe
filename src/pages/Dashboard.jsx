@@ -1,21 +1,59 @@
 import { useState } from 'react';
-import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined, LogoutOutlined } from '@ant-design/icons';
+import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined, LogoutOutlined, EditOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme, message } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import axios from 'axios';
+import { useCallback } from 'react';
+import ProfileUserFormEdit from '../components/ProfileUserFormEdit';
 
 import logo from '../assets/sma.png';
-import profile from '../assets/profile.png';
+import profile from '../assets/default-user.jpg';
 
 const Dashboard = () => {
   // eslint-disable-next-line
   const [percentage, setPercentage] = useState(50);
+  const [user, setUser] = useState({
+    name: Cookies.get('user_name'),
+    photo: Cookies.get('user_photo'),
+  });
+
+
   const navigate = useNavigate();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+  const [isEdit, setIsEdit] = useState(false);
+
+  const URL = import.meta.env.VITE_API_URL;
+
+  const getUser = useCallback(async () => {
+    try {
+      const response = await axios.get(`${URL}/api/v1/users/${Cookies.get('user_id')}`);
+      setUser(response?.data?.data);
+      Cookies.set('user_photo', response?.data?.data?.photo);
+      Cookies.set('user_name', response?.data?.data?.name);
+    } catch (error) {
+      console.log(error);
+    }
+  }, [URL]);
+
+
+  const handleEdit = () => {
+    setIsEdit(true);
+  }
+
+  const closepopup = () => {
+    setIsEdit(false);
+  };
+
+  const onEdit = () => {
+    getUser();
+    setIsEdit(false);
+  }
+
   return (
     <Layout>
       <Sider
@@ -111,7 +149,7 @@ const Dashboard = () => {
             <div className="logo-name-bar">
               <UserOutlined />
             </div>
-            <div className="name-bar">susanti</div>
+            <div className="name-bar">{user?.name}</div>
           </div>
         </Header>
         <Content
@@ -137,20 +175,27 @@ const Dashboard = () => {
                     <hr className="line-sub-header-dashboard" />
                   </div>
                 </div>
-
+                <ProfileUserFormEdit open={isEdit} closepopup={closepopup} onEdit={onEdit} />
                 <div className="profile-pengguna-dashboard">
                   <div className="profile-pengguna-text-dashboard">
                     <div>
                       <h5>Profil Pengguna</h5>
                     </div>
                   </div>
-                  <div className="profile-pengguna-ubah-password-dashboard">
-                    {/* <div className="icon-lock-dashboard">
-                      <LockOutlined />
-                    </div> */}
-                    {/* <div>
-                      <span className="text-ubah-password">Ubah Password</span>
-                    </div> */}
+                  <div className="profile-pengguna-ubah-password-dashboard" style={
+                    {
+                      cursor: 'pointer',
+                    }
+
+                  }
+                    onClick={handleEdit}
+                  >
+                    <div className="icon-lock-dashboard">
+                      <EditOutlined />
+                    </div>
+                    <div>
+                      <span className="text-ubah-password">Ubah gambar profile</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -158,21 +203,15 @@ const Dashboard = () => {
             <div className="content-container-dashboard">
               <div className="card-bio-dashboard">
                 <div className="img-card-bio-dashboard">
-                  <img className="image-card-bio-dashboard" src={profile} alt="" />
+                  <img className="image-card-bio-dashboard" src={user?.photo ? user?.photo : profile} alt="gambar user" />
                 </div>
                 <div className="bio-card-data-dashboard">
-                  <div className="nip-card-bio-dashboard">
-                    <span className="NIP">NIP</span>
-                  </div>
-                  <div className="value-nip-card-bio-dashboard">
-                    <span className="value-nip">XXXXXXXXX</span>
-                  </div>
                   <hr />
                   <div className="name-card-bio-dashboard">
                     <span className="NAME">Nama</span>
                   </div>
                   <div className="value-name-card-bio-dashboard">
-                    <span className="value-name">Susanti</span>
+                    <span className="value-name">{user?.name}</span>
                   </div>
                 </div>
               </div>

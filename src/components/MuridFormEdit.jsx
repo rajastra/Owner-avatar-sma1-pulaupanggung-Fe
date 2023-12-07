@@ -60,7 +60,7 @@ const MuridFormEdit = ({ closepopup, open, onEdit, user }) => {
       //   },
       // });
 
-      message.success('Berhasil menambahkan murid');
+      message.success('Berhasil edit data murid');
       setFormState({
         nama: '',
         nis: '',
@@ -105,7 +105,7 @@ const MuridFormEdit = ({ closepopup, open, onEdit, user }) => {
             </RadioGroup> */}
 
             <Button onClick={handleSubmit} className="btn-save-murid" loading={loading}>
-              Tambah Murid
+              Edit Murid
             </Button>
           </Stack>
         </DialogContent>

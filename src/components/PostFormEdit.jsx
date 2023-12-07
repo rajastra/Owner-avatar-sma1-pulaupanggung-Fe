@@ -62,7 +62,7 @@ const PostForm = ({ closepopup, open, onEdit, user }) => {
         },
       });
 
-      message.success('Berhasil memperbaharui data postingan');
+      message.success('Berhasil memperbarui  data postingan');
       setFormState({
         title: '',
         description: '',
@@ -87,7 +87,7 @@ const PostForm = ({ closepopup, open, onEdit, user }) => {
         maxWidth="sm"
       >
         <DialogTitle>
-          Tambah Postingan{' '}
+          Edit Postingan{' '}
           <IconButton onClick={handleClose} style={{ float: 'right' }}>
             <CloseIcon></CloseIcon>
           </IconButton>{' '}

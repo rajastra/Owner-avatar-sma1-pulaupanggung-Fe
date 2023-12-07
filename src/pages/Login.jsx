@@ -27,8 +27,10 @@ export default function Login() {
                 email: inputs.username,
                 password: inputs.password
             });
-            console.log(response?.data?.data)
             Cookies.set('token', response?.data?.token);
+            Cookies.set('user_id', response?.data?.data?.user.id);
+            Cookies.set('user_name', response?.data?.data?.user.name);
+            Cookies.set('user_photo', response?.data?.data?.user.photo);
             navigate('/dashboard');
             message.success('Login Success');
         } catch (error) {
