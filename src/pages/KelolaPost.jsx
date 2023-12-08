@@ -147,7 +147,7 @@ const KelolaPost = () => {
             <div className="logo-name-bar">
               <UserOutlined />
             </div>
-            <div className="name-bar">susanti</div>
+            <div className="name-bar">{Cookies.get('user_name')}</div>
           </div>
           <div className="sub-header-name-bar">
             <div className="name-section-bar">Data Postingan</div>

@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined,LogoutOutlined } from '@ant-design/icons';
+import { UploadOutlined, UserOutlined, HomeFilled, TeamOutlined, SplitCellsOutlined, UserAddOutlined, LogoutOutlined } from '@ant-design/icons';
 import { Layout, Menu, message, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import { Link } from 'react-router-dom';
@@ -151,7 +151,7 @@ const Kelas = () => {
             <div className="logo-name-bar">
               <UserOutlined />
             </div>
-            <div className="name-bar">susanti</div>
+            <div className="name-bar">{Cookies.get('user_name')}</div>
           </div>
           <div className="sub-header-name-bar">
             <div className="name-section-bar">Data Kelas</div>

@@ -6,7 +6,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import * as React from 'react';
 import axios from 'axios';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -40,7 +39,7 @@ const ActionIcon = ({ data, setUser, getUsers }) => {
   const handleDelete = async () => {
     try {
       await axios.delete(`${URL}/api/v1/classes/${data.id}`);
-      message.success('Berhasil menghapus admin');
+      message.success('Berhasil menghapus Kelas');
       getUsers();
     } catch (error) {
       let msg = error.response.data.message || 'Terjadi kesalahan';
