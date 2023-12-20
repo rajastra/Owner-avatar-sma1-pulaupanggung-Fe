@@ -20,6 +20,9 @@ export const Banner = ({ profile }) => {
 const Landing = () => {
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
+  const [akreditasi, setAkreditasi] = useState();
+  const [motivasi, setMotivasi] = useState();
+
 
   useEffect(() => {
     const getProfile = async () => {
@@ -30,6 +33,8 @@ const Landing = () => {
         );
         // set data with code 001
         setProfile(data?.data?.data.find((item) => item.code === '001'));
+        setAkreditasi(data?.data?.data.find((item) => item.code === '007'));
+        setMotivasi(data?.data?.data.find((item) => item.code === '008'));
       } catch (error) {
         console.log(error);
       }
@@ -47,10 +52,10 @@ const Landing = () => {
           <Banner profile={profile} />
           <InfoSchool profile={profile} />
           <InfoCards />
-          <Akreditasi />
+          <Akreditasi akreditasi={akreditasi} />
           {/* <Newslist />
       <NewsKegiatanList /> */}
-          <Motivate />
+          <Motivate motivasi={motivasi} />
           {/* <Footer /> */}
         </>}
     </>
